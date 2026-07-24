@@ -24,7 +24,8 @@
     "react-icons": "^4.11.0",
     "react-leaflet": "^4.2.1",
     "react-map-gl": "^7.1.9",
-    "react-router-dom": "^6.17.0"
+    "react-router": "^6.30.4",
+    "react-router-dom": "^6.30.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
