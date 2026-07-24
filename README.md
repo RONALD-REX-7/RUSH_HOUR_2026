@@ -335,7 +335,7 @@ ProblemChain follows a modular and scalable architecture that integrates Artific
 ---
 
 
-```text
+
 
 
 ---
@@ -347,6 +347,7 @@ The following diagram illustrates the overall architecture of **ProblemChain**, 
   <img src="./Details/System%20Architecture.png" alt="ProblemChain System Architecture" width="1000">
 </p>
 
+```text
 ## 🏛️ Architecture Layers
 
 ### 👨‍👩‍👧 User Layer
