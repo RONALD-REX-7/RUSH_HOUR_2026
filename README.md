@@ -712,3 +712,282 @@ These tools help in:
 ---
 
 > **ProblemChain leverages a robust full-stack architecture integrated with Artificial Intelligence, cloud technologies, geospatial visualization, and secure authentication to transform verified community problems into sustainable startup opportunities.**
+# 🏗️ System Architecture
+
+The **ProblemChain** platform follows a modular, scalable, and service-oriented architecture that integrates web technologies, Artificial Intelligence, cloud storage, geospatial visualization, and secure authentication. The architecture enables seamless interaction between citizens, entrepreneurs, administrators, AI services, and the backend infrastructure to transform verified community problems into startup opportunities.
+
+---
+
+## 📌 High-Level System Architecture
+
+<p align="center">
+  <img src="docs/images/system-architecture.png" alt="ProblemChain System Architecture" width="100%">
+</p>
+
+> **Figure 1:** High-Level Architecture of the ProblemChain Platform.
+
+---
+
+## 🏛️ Architecture Overview
+
+The architecture is divided into the following major layers:
+
+### 👥 1. User Layer
+
+The platform supports three different types of users:
+
+- 👨‍👩‍👧 **Citizens**
+  - Report community problems
+  - Upload images and supporting evidence
+  - Track implementation progress
+
+- 💼 **Entrepreneurs**
+  - Browse startup opportunities
+  - Join opportunity queues
+  - Accept and implement opportunities
+
+- 🛡️ **Administrators**
+  - Verify submitted reports
+  - Manage users and opportunities
+  - Monitor platform activities
+
+---
+
+### 🌐 2. Frontend Layer
+
+The frontend is developed using:
+
+- React.js
+- Vite
+- Tailwind CSS
+- JavaScript
+
+It provides an intuitive and responsive interface for all users.
+
+Major frontend modules include:
+
+- Home Dashboard
+- Authentication
+- Problem Reporting
+- Opportunity Explorer
+- Interactive Maps
+- Analytics Dashboard
+- Queue Management
+- Notifications
+- Project Tracking
+
+---
+
+### ⚙️ 3. Backend Layer
+
+The backend acts as the central processing unit of the platform.
+
+Developed using:
+
+- Node.js
+- Express.js
+
+Responsibilities include:
+
+- User Authentication
+- Business Logic
+- REST API Management
+- Queue Processing
+- Notification Services
+- AI Integration
+- Database Communication
+
+---
+
+### 🤖 4. AI Processing Layer
+
+Artificial Intelligence is responsible for converting community reports into meaningful business insights.
+
+The AI Engine performs:
+
+- Automatic Problem Categorization
+- Duplicate Report Detection
+- Community Demand Estimation
+- Opportunity Recommendation Support
+
+Technologies:
+
+- Python
+- Scikit-learn
+- Pandas
+- NumPy
+
+---
+
+### 🗄️ 5. Database Layer
+
+MongoDB stores all platform information securely.
+
+Collections include:
+
+- Users
+- Community Reports
+- Startup Opportunities
+- Queue Details
+- Notifications
+- Analytics
+- Project Milestones
+
+Mongoose is used for schema definition and database interaction.
+
+---
+
+### ☁️ 6. Cloud Services
+
+ProblemChain integrates cloud services for scalable storage.
+
+### Cloudinary
+
+Stores:
+
+- Uploaded Images
+- Community Evidence
+- Project Photos
+
+### MongoDB Atlas
+
+Provides:
+
+- Cloud Database
+- Data Backup
+- High Availability
+- Secure Storage
+
+---
+
+### 🗺️ 7. Maps & Location Services
+
+The platform visualizes opportunities geographically.
+
+Technologies:
+
+- Leaflet.js
+- OpenStreetMap
+
+Capabilities:
+
+- Interactive Maps
+- Opportunity Mapping
+- Demand Heatmaps
+- Location Analytics
+
+---
+
+### 🔐 8. Security Layer
+
+Security mechanisms protect user information and platform integrity.
+
+Implemented using:
+
+- JWT Authentication
+- bcrypt Password Hashing
+- Role-Based Access Control (RBAC)
+- Protected REST APIs
+- Environment Variables (.env)
+
+---
+
+## 🔄 Data Flow
+
+```text
+Citizen
+    │
+    ▼
+Submit Community Problem
+    │
+    ▼
+Backend Server
+    │
+    ▼
+AI Engine
+ ├── Categorization
+ ├── Duplicate Detection
+ └── Demand Estimation
+    │
+    ▼
+Admin Verification
+    │
+    ▼
+Verified Startup Opportunity
+    │
+    ▼
+Entrepreneur Dashboard
+    │
+    ▼
+Queue Allocation
+    │
+    ▼
+Opportunity Accepted
+    │
+    ▼
+Business Implementation
+    │
+    ▼
+Project Tracking & Notifications
+```
+
+---
+
+## 📡 System Components
+
+| Component | Responsibility |
+|------------|----------------|
+| Citizens | Submit community problems and monitor progress |
+| Entrepreneurs | Discover and implement startup opportunities |
+| Administrators | Verify reports and manage platform operations |
+| Frontend | User interface and interaction |
+| Backend | Business logic and API management |
+| AI Engine | Problem analysis and demand estimation |
+| MongoDB | Data storage and retrieval |
+| Cloudinary | Secure image storage |
+| Maps | Visualize problems and opportunities |
+| Notification Service | Sends real-time updates |
+
+---
+
+## 🔗 Component Interaction
+
+1. Citizens submit a community problem.
+2. The backend receives and stores the report.
+3. AI analyzes the submitted problem.
+4. Administrators verify the report.
+5. Verified reports become startup opportunities.
+6. Entrepreneurs explore opportunities using maps and analytics.
+7. Entrepreneurs join the allocation queue.
+8. The queue system allocates the opportunity fairly.
+9. The selected entrepreneur starts implementation.
+10. The platform tracks progress and sends notifications.
+
+---
+
+## 🎯 Architectural Highlights
+
+- Modular and scalable architecture
+- AI-powered decision-making
+- Secure authentication and authorization
+- Cloud-based image and database storage
+- Interactive geospatial visualization
+- Queue-based startup opportunity allocation
+- Real-time notifications
+- Transparent project lifecycle tracking
+
+---
+
+## 🚀 Advantages of the Architecture
+
+- Highly scalable and modular design
+- Easy integration of additional AI models
+- Supports future cloud-native deployment
+- Secure and role-based user management
+- Efficient handling of community reports
+- Transparent workflow from problem reporting to startup implementation
+- Enables data-driven decision-making for entrepreneurs and government authorities
+
+---
+
+> **ProblemChain adopts a layered architecture that seamlessly integrates Artificial Intelligence, geospatial visualization, secure cloud services, and modern web technologies to transform verified community challenges into sustainable startup opportunities.**
