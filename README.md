@@ -2097,3 +2097,329 @@ Launch ProblemChain
 # ✅ Installation Complete
 
 After completing the above steps, the **ProblemChain** platform will be successfully configured and ready for development, testing, and deployment. The system enables citizens to report verified community problems, allows AI to analyze and classify reports, and helps entrepreneurs discover sustainable startup opportunities through a secure, scalable, and intelligent workflow.
+# 🔌 API & Database Documentation
+
+ProblemChain follows a **RESTful API architecture** where the frontend communicates with the backend using HTTP requests. The backend processes requests, interacts with the AI engine and MongoDB database, and returns appropriate responses to the client.
+
+The platform uses **JSON** as the primary data exchange format and follows secure API communication using **JWT Authentication**.
+
+---
+
+# 📡 API Architecture
+
+```text
+React Frontend
+        │
+        │ HTTP Requests (REST API)
+        ▼
+Node.js + Express.js Backend
+        │
+        ├──────────────┐
+        │              │
+        ▼              ▼
+MongoDB Database    AI Engine (Python)
+        │              │
+        └──────┬───────┘
+               ▼
+         JSON Response
+               │
+               ▼
+        React Frontend
+```
+
+---
+
+# 🌐 REST API Endpoints
+
+## 🔐 Authentication APIs
+
+| Method | Endpoint | Description |
+|----------|--------------------|----------------------------|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | User login |
+| GET | `/api/auth/profile` | Get logged-in user profile |
+| PUT | `/api/auth/update` | Update user profile |
+
+---
+
+## 👥 User APIs
+
+| Method | Endpoint | Description |
+|----------|---------------------|-----------------------------|
+| GET | `/api/users` | Get all users (Admin) |
+| GET | `/api/users/:id` | Get user details |
+| PUT | `/api/users/:id` | Update user |
+| DELETE | `/api/users/:id` | Delete user |
+
+---
+
+## 📝 Community Problem APIs
+
+| Method | Endpoint | Description |
+|----------|-------------------------|------------------------------|
+| POST | `/api/reports` | Submit a community problem |
+| GET | `/api/reports` | View all reports |
+| GET | `/api/reports/:id` | View report details |
+| PUT | `/api/reports/:id` | Update report |
+| DELETE | `/api/reports/:id` | Delete report |
+
+---
+
+## ✅ Verification APIs
+
+| Method | Endpoint | Description |
+|----------|---------------------------|-----------------------------|
+| PUT | `/api/reports/verify/:id` | Verify community report |
+| PUT | `/api/reports/reject/:id` | Reject report |
+
+---
+
+## 🚀 Startup Opportunity APIs
+
+| Method | Endpoint | Description |
+|----------|------------------------------|------------------------------|
+| GET | `/api/opportunities` | View startup opportunities |
+| GET | `/api/opportunities/:id` | Opportunity details |
+| POST | `/api/opportunities` | Create opportunity |
+| PUT | `/api/opportunities/:id` | Update opportunity |
+| DELETE | `/api/opportunities/:id` | Delete opportunity |
+
+---
+
+## 📋 Queue Management APIs
+
+| Method | Endpoint | Description |
+|----------|-------------------------|-------------------------------|
+| POST | `/api/queue/join` | Join opportunity queue |
+| GET | `/api/queue/:id` | View queue status |
+| PUT | `/api/queue/accept/:id` | Accept opportunity |
+| PUT | `/api/queue/reject/:id` | Reject opportunity |
+
+---
+
+## 🔔 Notification APIs
+
+| Method | Endpoint | Description |
+|----------|-------------------------------|------------------------------|
+| GET | `/api/notifications` | View notifications |
+| PUT | `/api/notifications/read` | Mark notification as read |
+
+---
+
+# 🤖 AI API Workflow
+
+The backend communicates with the AI Engine whenever a community report is submitted.
+
+### AI Processing
+
+- Problem Categorization
+- Duplicate Detection
+- Community Demand Estimation
+
+### AI Request Flow
+
+```text
+Citizen Report
+      │
+      ▼
+Backend API
+      │
+      ▼
+AI Engine
+      │
+ ├── Categorization
+ ├── Duplicate Detection
+ └── Demand Estimation
+      │
+      ▼
+Backend
+      │
+      ▼
+MongoDB
+```
+
+---
+
+# 🗄️ Database Documentation
+
+MongoDB is used as the primary NoSQL database for storing all application data.
+
+---
+
+# Database Collections
+
+## 👤 Users Collection
+
+Stores information about citizens, entrepreneurs, and administrators.
+
+| Field | Type | Description |
+|--------|------|-------------|
+| _id | ObjectId | Unique User ID |
+| name | String | User Name |
+| email | String | Email Address |
+| password | String | Encrypted Password |
+| role | String | Citizen / Entrepreneur / Admin |
+| createdAt | Date | Account Creation Date |
+
+---
+
+## 📝 Reports Collection
+
+Stores all community problem reports.
+
+| Field | Type | Description |
+|--------|------|-------------|
+| _id | ObjectId | Report ID |
+| title | String | Problem Title |
+| description | String | Problem Description |
+| category | String | AI Category |
+| location | Object | Latitude & Longitude |
+| images | Array | Uploaded Images |
+| status | String | Pending / Verified / Rejected |
+| demandScore | Number | AI Demand Score |
+
+---
+
+## 🚀 Opportunities Collection
+
+Stores startup opportunities created from verified reports.
+
+| Field | Type | Description |
+|--------|------|-------------|
+| _id | ObjectId | Opportunity ID |
+| reportId | ObjectId | Linked Report |
+| category | String | Business Category |
+| demandLevel | String | High / Medium / Low |
+| status | String | Available / Claimed |
+| entrepreneur | ObjectId | Assigned Entrepreneur |
+
+---
+
+## 📋 Queue Collection
+
+Stores entrepreneur queue details.
+
+| Field | Type | Description |
+|--------|------|-------------|
+| _id | ObjectId | Queue ID |
+| opportunityId | ObjectId | Opportunity Reference |
+| entrepreneurId | ObjectId | User Reference |
+| position | Number | Queue Position |
+| status | String | Waiting / Accepted / Rejected |
+
+---
+
+## 🔔 Notifications Collection
+
+Stores user notifications.
+
+| Field | Type | Description |
+|--------|------|-------------|
+| _id | ObjectId | Notification ID |
+| userId | ObjectId | Receiver |
+| message | String | Notification Message |
+| status | String | Read / Unread |
+| createdAt | Date | Timestamp |
+
+---
+
+# 🗃️ Entity Relationship Overview
+
+```text
+User
+ │
+ ├──────────────┐
+ │              │
+ ▼              ▼
+Reports     Opportunities
+ │              │
+ └──────┐   ┌───┘
+        ▼   ▼
+      Queue
+        │
+        ▼
+ Notifications
+```
+
+---
+
+# 🔄 Database Workflow
+
+```text
+Citizen
+    │
+    ▼
+Submit Report
+    │
+    ▼
+Reports Collection
+    │
+    ▼
+AI Processing
+    │
+    ▼
+Verification
+    │
+    ▼
+Opportunity Collection
+    │
+    ▼
+Queue Collection
+    │
+    ▼
+Notification Collection
+```
+
+---
+
+# 🔐 API Security
+
+The REST APIs are secured using:
+
+- JWT Authentication
+- Role-Based Access Control (RBAC)
+- bcrypt Password Encryption
+- Protected Routes
+- Input Validation
+- Environment Variables (.env)
+
+---
+
+# 📊 API Response Format
+
+### Success Response
+
+```json
+{
+  "success": true,
+  "message": "Operation completed successfully.",
+  "data": {}
+}
+```
+
+### Error Response
+
+```json
+{
+  "success": false,
+  "message": "Invalid request.",
+  "error": {}
+}
+```
+
+---
+
+# 📌 API & Database Highlights
+
+- RESTful API Architecture
+- JSON-based Communication
+- JWT Protected Endpoints
+- MongoDB NoSQL Database
+- AI Integration for Report Analysis
+- Queue-Based Opportunity Management
+- Cloud-Based Image Storage
+- Modular and Scalable Backend Design
+
+---
+
+> **The ProblemChain backend follows a secure, scalable, and modular REST API architecture with MongoDB as the primary database, enabling efficient communication between users, AI services, and the application while ensuring data integrity and system reliability.**
