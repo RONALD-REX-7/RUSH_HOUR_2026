@@ -312,7 +312,7 @@ ProblemChain ensures:
 The following workflow illustrates how ProblemChain transforms verified local problems into startup opportunities.
 
 <p align="center">
-  <img src="Details/ChatGPT%20Image%20Jul%2024,%202026,%2002_39_09%20PM.png" alt="ProblemChain Workflow" width="1000">
+  <img src="Details/workflow" alt="ProblemChain Workflow" width="1000">
 </p>
 
 # 💻 Why ProblemChain?
