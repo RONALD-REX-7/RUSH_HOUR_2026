@@ -3403,3 +3403,120 @@ Global Smart Community Ecosystem
 ---
 
 > **ProblemChain is designed not only as a hackathon project but as a scalable, AI-powered platform with the potential to revolutionize how verified community needs are transformed into sustainable startup opportunities, fostering innovation, entrepreneurship, and inclusive community development.**
+# 📚 References
+
+The following books, official documentation, research papers, and development tools were referred to during the design, development, and implementation of the **ProblemChain** platform.
+
+---
+
+# 📖 Books
+
+1. **Ian Sommerville**, *Software Engineering*, 10th Edition, Pearson Education, 2016.
+
+2. **Robert C. Martin**, *Clean Architecture: A Craftsman's Guide to Software Structure and Design*, Pearson, 2017.
+
+3. **Alex Banks & Eve Porcello**, *Learning React*, 2nd Edition, O'Reilly Media, 2020.
+
+4. **Kristina Chodorow**, *MongoDB: The Definitive Guide*, 3rd Edition, O'Reilly Media, 2019.
+
+5. **Aurélien Géron**, *Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow*, 3rd Edition, O'Reilly Media, 2022.
+
+---
+
+# 🌐 Official Documentation
+
+The following official resources were used for learning, implementation, and best practices.
+
+| Technology | Documentation |
+|------------|---------------|
+| React.js | https://react.dev/ |
+| Vite | https://vitejs.dev/ |
+| Node.js | https://nodejs.org/docs/latest/api/ |
+| Express.js | https://expressjs.com/ |
+| MongoDB | https://www.mongodb.com/docs/ |
+| Mongoose | https://mongoosejs.com/docs/ |
+| Tailwind CSS | https://tailwindcss.com/docs |
+| Leaflet.js | https://leafletjs.com/ |
+| OpenStreetMap | https://wiki.openstreetmap.org/ |
+| Cloudinary | https://cloudinary.com/documentation |
+| JWT | https://jwt.io/ |
+| bcrypt | https://github.com/kelektiv/node.bcrypt.js |
+| Scikit-learn | https://scikit-learn.org/stable/ |
+| Pandas | https://pandas.pydata.org/docs/ |
+| NumPy | https://numpy.org/doc/ |
+
+---
+
+# 📑 Research Papers
+
+The following research papers and academic resources inspired the Artificial Intelligence concepts used in ProblemChain.
+
+1. **Ashish Vaswani et al.**
+   *Attention Is All You Need.*
+   Advances in Neural Information Processing Systems (NeurIPS), 2017.
+
+2. **Jacob Devlin, Ming-Wei Chang, Kenton Lee & Kristina Toutanova**
+   *BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.*
+   NAACL-HLT, 2019.
+
+3. **Christopher D. Manning, Prabhakar Raghavan & Hinrich Schütze**
+   *Introduction to Information Retrieval.*
+   Cambridge University Press, 2008.
+
+---
+
+# 🛠️ Development Tools
+
+The following software and services were used during the development and testing of the project.
+
+- Visual Studio Code
+- Git
+- GitHub
+- Postman
+- MongoDB Atlas
+- Render
+- Vercel
+- Cloudinary
+- Canva
+- Microsoft PowerPoint
+
+---
+
+# 💻 Open Source Libraries
+
+ProblemChain leverages several open-source technologies to build a modern, scalable, and AI-powered web platform.
+
+- React.js
+- Vite
+- Tailwind CSS
+- Express.js
+- Node.js
+- MongoDB
+- Mongoose
+- Scikit-learn
+- Pandas
+- NumPy
+- Leaflet.js
+- OpenStreetMap
+- JWT
+- bcrypt
+
+---
+
+# 🙏 Acknowledgements
+
+We sincerely thank the open-source community, official documentation contributors, and research authors whose resources and tools made the development of **ProblemChain** possible.
+
+Special thanks to:
+
+- React Community
+- Node.js Community
+- MongoDB Community
+- Python Open Source Community
+- OpenStreetMap Contributors
+- Cloudinary Developers
+- GitHub Open Source Community
+
+---
+
+> **ProblemChain** was developed by combining modern full-stack web technologies, Artificial Intelligence, geospatial visualization, and secure cloud services while following industry best practices, official documentation, and established software engineering principles.
