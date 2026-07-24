@@ -29,7 +29,7 @@ from sklearn.metrics import (
 # Load Dataset
 # -----------------------------------
 
-DATASET = "../dataset/complaints.csv"
+DATASET = "dataset/complaints.csv"
 
 df = pd.read_csv(DATASET)
 
