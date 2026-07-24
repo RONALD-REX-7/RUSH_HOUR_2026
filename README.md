@@ -307,12 +307,12 @@ ProblemChain ensures:
 | Version Control | Git & GitHub |
 
 ---
-## 🔄 System Workflow
+# 🏗️ System Architecture
 
-The following diagram illustrates the complete workflow of **ProblemChain**, from user registration to project implementation and progress tracking.
+The following diagram illustrates the overall architecture of **ProblemChain**, showing the interaction between users, the frontend, backend, AI/ML modules, database, cloud storage, and external services.
 
 <p align="center">
-  <img src="Details/workflow.png" alt="ProblemChain Workflow" width="1000">
+  <img src="Details/System%20Architecture.png" alt="ProblemChain System Architecture" width="1000">
 </p>
 
 # 💻 Why ProblemChain?
