@@ -991,3 +991,6 @@ Project Tracking & Notifications
 ---
 
 > **ProblemChain adopts a layered architecture that seamlessly integrates Artificial Intelligence, geospatial visualization, secure cloud services, and modern web technologies to transform verified community challenges into sustainable startup opportunities.**
+<p align="center">
+  <img src="docs/images/system-architecture.png" alt="ProblemChain System Architecture" width="100%">
+</p>
