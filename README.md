@@ -37,7 +37,6 @@ The platform creates a transparent ecosystem where citizens, entrepreneurs, admi
 ---
 
 # 🎯 Domain
-
 **Open Innovation**
 
 ---
