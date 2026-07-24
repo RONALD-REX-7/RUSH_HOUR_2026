@@ -160,3 +160,264 @@ The primary objectives of **ProblemChain** are:
 ProblemChain aims to create a sustainable ecosystem where verified community challenges become entrepreneurial opportunities. By leveraging Artificial Intelligence and community participation, the platform promotes transparency, encourages innovation, reduces redundant complaints, supports informed investment decisions, and contributes to long-term socio-economic development.
 
 Ultimately, ProblemChain transforms local problems into impactful startup solutions, benefiting citizens, entrepreneurs, and society as a whole.
+# ✨ Project Features
+
+ProblemChain is an AI-powered community platform that transforms verified local community problems into sustainable startup opportunities. The platform combines Artificial Intelligence, geospatial technologies, secure authentication, and transparent opportunity allocation to bridge the gap between citizens, entrepreneurs, and government authorities.
+
+---
+
+## 📝 Community Problem Reporting
+
+Citizens can report local community problems through an intuitive and user-friendly interface by providing:
+
+- 📍 Problem Location
+- 🏷️ Problem Category
+- 📝 Detailed Description
+- 📷 Images
+- 📄 Supporting Evidence
+
+Each submitted report is securely stored in the database with a **Pending Verification** status before further processing.
+
+---
+
+## 🤖 AI-Based Problem Analysis
+
+The integrated AI engine automatically analyzes every submitted report to improve efficiency and accuracy.
+
+### AI Capabilities
+
+- 🏷️ Automatic Problem Categorization
+- 🔍 Duplicate Report Detection
+- 📊 Community Demand Estimation
+- 📈 Data-Driven Insights
+
+These features reduce manual effort and help identify genuine community needs.
+
+---
+
+## ✅ Community Problem Verification
+
+To ensure authenticity and transparency, every submitted report undergoes a verification process.
+
+Administrators or trusted volunteers verify:
+
+- ✔️ Problem authenticity
+- ✔️ Supporting evidence
+- ✔️ Location accuracy
+- ✔️ Duplicate status
+
+Only verified reports are converted into startup opportunities.
+
+---
+
+## 🚀 Startup Opportunity Generation
+
+Instead of treating verified reports as ordinary complaints, ProblemChain transforms them into structured startup opportunities.
+
+Each opportunity includes:
+
+- 📍 Business Location
+- 🏷️ Business Category
+- 📈 Estimated Demand Level
+- 🖼️ Supporting Images
+- 👥 Community Information
+
+This enables entrepreneurs to identify genuine business opportunities backed by real community demand.
+
+---
+
+## 🗺️ Interactive Maps & Demand Heatmaps
+
+Entrepreneurs can visualize opportunities using interactive geographical tools.
+
+Features include:
+
+- 🗺️ Interactive Maps
+- 🔥 Demand Heatmaps
+- 📍 Opportunity Mapping
+- 🎯 Smart Filters
+- 📊 Regional Analytics
+
+These visualizations help entrepreneurs identify high-demand areas for business expansion.
+
+---
+
+## 📋 Queue-Based Opportunity Allocation
+
+To ensure fairness, every startup opportunity follows a transparent queue-based allocation mechanism.
+
+### Queue Rules
+
+- Maximum of **6 entrepreneurs** can join a queue.
+- The first entrepreneur receives exclusive access for a limited period.
+- Queue positions are maintained automatically.
+- Equal opportunity for all interested entrepreneurs.
+
+---
+
+## 🔄 Automatic Queue Management
+
+The queue allocation process is fully automated.
+
+If an entrepreneur:
+
+- ❌ Declines the opportunity
+- ⏰ Fails to respond within the allotted time
+
+The system automatically transfers the opportunity to the next entrepreneur in the queue.
+
+This eliminates manual intervention and ensures efficient opportunity allocation.
+
+---
+
+## 🔒 Opportunity Locking
+
+Once an entrepreneur accepts an opportunity:
+
+- 🔐 The opportunity is marked as **Claimed**
+- 🚫 Further claims are blocked
+- 🔔 Remaining entrepreneurs receive notifications
+
+This prevents duplicate claims and maintains allocation transparency.
+
+---
+
+## 📈 Project Progress Tracking
+
+After opportunity acceptance, the platform continuously monitors project implementation.
+
+Tracking includes:
+
+- 📌 Project Milestones
+- 📊 Implementation Status
+- 📅 Timeline Updates
+- ✅ Completion Progress
+
+Citizens remain informed about the progress of projects initiated in their communities.
+
+---
+
+## 🏛️ Government & Analytics Dashboard
+
+Government authorities gain access to advanced analytical tools.
+
+Dashboard Features:
+
+- 📊 Regional Demand Analysis
+- 📈 Community Insights
+- 🌍 Opportunity Distribution
+- 📍 Demand Heatmaps
+- 📉 Trend Analysis
+
+These insights support evidence-based planning and policy decisions.
+
+---
+
+## 🔔 Real-Time Notifications
+
+The platform keeps all stakeholders informed through instant notifications.
+
+Citizens receive:
+
+- Report Status Updates
+- Verification Results
+- Project Progress Updates
+
+Entrepreneurs receive:
+
+- Queue Position Updates
+- Opportunity Allocation
+- Project Milestone Notifications
+
+Administrators receive:
+
+- New Report Alerts
+- Verification Requests
+- Opportunity Management Updates
+
+---
+
+## 🔐 Secure Authentication & Role-Based Access
+
+ProblemChain implements secure authentication using modern security practices.
+
+Supported Roles:
+
+- 👨‍👩‍👧 Citizen
+- 💼 Entrepreneur
+- 🛡️ Administrator
+
+Security Features:
+
+- JWT Authentication
+- bcrypt Password Encryption
+- Protected REST APIs
+- Role-Based Access Control (RBAC)
+
+---
+
+## 📷 Secure Image Management
+
+Community reports may include supporting images.
+
+Features include:
+
+- Secure Cloudinary Storage
+- Fast Image Delivery
+- Reliable Cloud Backup
+- Optimized Image Access
+
+---
+
+## 📊 AI-Powered Analytics
+
+The platform generates meaningful insights using Artificial Intelligence.
+
+Analytics include:
+
+- Problem Distribution
+- Category-Wise Reports
+- Demand Estimation
+- Duplicate Report Statistics
+- Opportunity Analytics
+- Regional Business Demand
+
+---
+
+## 🌍 Transparent & Trusted Ecosystem
+
+ProblemChain ensures complete transparency throughout the project lifecycle.
+
+Key Benefits:
+
+- ✔️ Verified Community Reports
+- ✔️ Fair Opportunity Allocation
+- ✔️ AI-Assisted Decision Making
+- ✔️ Real-Time Progress Tracking
+- ✔️ Data-Driven Business Opportunities
+- ✔️ Sustainable Community Development
+
+---
+
+# 🌟 Feature Summary
+
+| Feature | Description |
+|---------|-------------|
+| 📝 Community Problem Reporting | Citizens report local problems with evidence and location. |
+| 🤖 AI-Based Analysis | AI categorizes reports, detects duplicates, and estimates demand. |
+| ✅ Report Verification | Admins verify submitted reports before publication. |
+| 🚀 Startup Opportunity Generation | Verified reports become startup opportunities. |
+| 🗺️ Interactive Maps & Heatmaps | Visualize opportunities and demand geographically. |
+| 📋 Queue-Based Allocation | Fair opportunity allocation using a queue mechanism. |
+| 🔄 Automatic Queue Management | Automatically reallocates declined or expired opportunities. |
+| 🔒 Opportunity Locking | Prevents duplicate opportunity claims. |
+| 📈 Progress Tracking | Tracks implementation milestones and project status. |
+| 🏛️ Government Dashboard | Regional analytics and planning insights. |
+| 🔔 Notifications | Real-time updates for all stakeholders. |
+| 🔐 Secure Authentication | JWT, bcrypt, and role-based access control. |
+| 📷 Cloud Image Storage | Secure image uploads using Cloudinary. |
+| 📊 AI Analytics | Data-driven insights and demand estimation. |
+| 🌍 Transparent Ecosystem | Connects communities, entrepreneurs, and government through AI. |
+
+---
+```
