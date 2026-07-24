@@ -2423,3 +2423,331 @@ The REST APIs are secured using:
 ---
 
 > **The ProblemChain backend follows a secure, scalable, and modular REST API architecture with MongoDB as the primary database, enabling efficient communication between users, AI services, and the application while ensuring data integrity and system reliability.**
+# 🔐 Security Measures
+
+Security is a fundamental aspect of the **ProblemChain** platform. The application implements multiple layers of security to ensure the confidentiality, integrity, and availability of user data while protecting the platform from unauthorized access and malicious activities.
+
+---
+
+# 🛡️ Security Architecture
+
+```text
+                User Login
+                     │
+                     ▼
+          JWT Authentication
+                     │
+                     ▼
+      Role-Based Access Control
+                     │
+                     ▼
+        Protected REST APIs
+                     │
+                     ▼
+        Backend Validation
+                     │
+        ┌────────────┴────────────┐
+        │                         │
+        ▼                         ▼
+ MongoDB Database          Cloudinary Storage
+        │                         │
+        └────────────┬────────────┘
+                     ▼
+             Secure Platform
+```
+
+---
+
+# 🔑 1. JWT-Based Authentication
+
+The platform uses **JSON Web Token (JWT)** authentication to secure user sessions.
+
+### Features
+
+- Secure user login
+- Token-based authentication
+- Protected REST API access
+- Session management
+- Unauthorized request prevention
+
+### Workflow
+
+1. User logs in with valid credentials.
+2. Backend validates the user.
+3. JWT token is generated.
+4. Token is sent to the client.
+5. Protected APIs require the JWT token for authorization.
+
+### Benefits
+
+- Prevents unauthorized access.
+- Eliminates the need for server-side session storage.
+- Provides secure API communication.
+
+---
+
+# 🔒 2. Password Encryption
+
+User passwords are securely encrypted before being stored in the database.
+
+### Technology Used
+
+- **bcrypt**
+
+### Features
+
+- Password hashing
+- Salt generation
+- Secure password verification
+
+### Benefits
+
+- Plain-text passwords are never stored.
+- Protects user credentials even if the database is compromised.
+- Increases overall authentication security.
+
+---
+
+# 👥 3. Role-Based Access Control (RBAC)
+
+ProblemChain supports three different user roles, each with specific permissions.
+
+| Role | Permissions |
+|------|-------------|
+| 👨‍👩‍👧 Citizen | Submit problems, track reports, receive notifications |
+| 💼 Entrepreneur | View startup opportunities, join queues, implement projects |
+| 🛡️ Administrator | Verify reports, manage users, manage opportunities |
+
+### Benefits
+
+- Prevents unauthorized operations.
+- Restricts access based on user responsibilities.
+- Improves overall platform security.
+
+---
+
+# ✅ 4. Input Validation
+
+All user inputs are validated on both the client side and the server side.
+
+### Validation Includes
+
+- Required fields
+- Email validation
+- Password validation
+- Image validation
+- Invalid request detection
+- Data sanitization
+
+### Benefits
+
+- Prevents invalid or malicious input.
+- Improves data consistency.
+- Reduces common web vulnerabilities.
+
+---
+
+# 🖼️ 5. Secure Image Upload
+
+Community reports often contain images as supporting evidence.
+
+Images are securely stored using **Cloudinary**.
+
+### Security Measures
+
+- Supported file type validation
+- File size restrictions
+- Cloud storage
+- Secure image delivery
+
+### Benefits
+
+- Protects the server from unsafe file uploads.
+- Reduces local storage requirements.
+- Improves scalability.
+
+---
+
+# 🗄️ 6. Database Security
+
+MongoDB Atlas provides secure cloud-hosted database services.
+
+### Security Features
+
+- Authentication-enabled database access
+- Network access restrictions
+- Encrypted data transmission
+- Secure cloud backup
+- Controlled database permissions
+
+### Benefits
+
+- Protects sensitive user information.
+- Prevents unauthorized database access.
+- Improves data reliability.
+
+---
+
+# 🔐 7. Environment Variable Protection
+
+Sensitive configuration details are stored in environment variables instead of source code.
+
+### Protected Information
+
+- MongoDB Connection String
+- JWT Secret Key
+- Cloudinary API Keys
+- Server Configuration
+
+Example:
+
+```env
+MONGODB_URI=*************
+
+JWT_SECRET=*************
+
+CLOUDINARY_API_KEY=*************
+```
+
+### Benefits
+
+- Prevents accidental exposure of sensitive credentials.
+- Improves deployment security.
+- Keeps confidential information outside the repository.
+
+---
+
+# 🌐 8. Secure API Communication
+
+All protected REST APIs require authentication.
+
+### Security Features
+
+- JWT Authorization
+- Protected Routes
+- Proper HTTP Status Codes
+- Request Validation
+- Secure Error Handling
+
+### Benefits
+
+- Prevents unauthorized API access.
+- Ensures secure communication between frontend and backend.
+- Reduces API misuse.
+
+---
+
+# 🤖 9. AI Verification Before Publishing
+
+Artificial Intelligence assists in validating submitted reports before they become startup opportunities.
+
+### AI Functions
+
+- Automatic categorization
+- Duplicate report detection
+- Community demand estimation
+
+Verified reports are then reviewed by administrators before publication.
+
+### Benefits
+
+- Reduces duplicate reports.
+- Improves report quality.
+- Prevents misleading or false startup opportunities.
+
+---
+
+# 📋 10. Queue-Based Opportunity Protection
+
+The opportunity allocation system follows a secure and transparent queue mechanism.
+
+### Queue Rules
+
+- Maximum of **6 entrepreneurs** per opportunity.
+- First-Come, First-Served allocation.
+- Automatic queue progression.
+- Opportunity locking after acceptance.
+
+### Benefits
+
+- Prevents duplicate opportunity claims.
+- Ensures fair allocation.
+- Maintains transparency.
+
+---
+
+# 🔔 11. Notification Security
+
+Notifications are delivered only to authorized users.
+
+Users receive updates related only to:
+
+- Their submitted reports
+- Queue status
+- Opportunity allocation
+- Project progress
+
+### Benefits
+
+- Protects user privacy.
+- Prevents information leakage.
+- Ensures secure communication.
+
+---
+
+# 📜 12. Audit & Activity Logging
+
+Important system events are recorded for monitoring and troubleshooting.
+
+### Logged Activities
+
+- User Login
+- Problem Submission
+- Report Verification
+- Opportunity Creation
+- Queue Allocation
+- Opportunity Acceptance
+
+### Benefits
+
+- Improves accountability.
+- Supports troubleshooting.
+- Helps monitor system activity.
+
+---
+
+# 🔐 Security Summary
+
+| Security Measure | Purpose |
+|------------------|---------|
+| JWT Authentication | Secure user authentication and authorization |
+| bcrypt Password Hashing | Encrypt user passwords |
+| Role-Based Access Control | Restrict access based on user roles |
+| Input Validation | Prevent invalid and malicious inputs |
+| Cloudinary Image Storage | Secure image uploads |
+| MongoDB Security | Protect application data |
+| Environment Variables | Secure sensitive credentials |
+| Protected REST APIs | Prevent unauthorized API access |
+| AI Verification | Detect duplicate and invalid reports |
+| Queue Protection | Ensure fair opportunity allocation |
+| Notification Security | Deliver updates only to authorized users |
+| Audit Logging | Track important platform activities |
+
+---
+
+# ✅ Key Security Highlights
+
+- 🔐 JWT-based authentication and authorization
+- 🔒 Encrypted password storage using bcrypt
+- 👥 Role-Based Access Control (RBAC)
+- 🗄️ Secure MongoDB Atlas database
+- ☁️ Secure Cloudinary image storage
+- 🛡️ Protected REST APIs
+- 🤖 AI-assisted report verification
+- 📋 Transparent queue protection mechanism
+- 📜 Activity logging for monitoring
+- 🌐 Secure cloud-ready architecture
+
+---
+
+> **ProblemChain adopts a multi-layered security approach by combining secure authentication, encrypted credentials, role-based authorization, protected APIs, AI-assisted verification, and cloud security practices to ensure a reliable, transparent, and trustworthy platform for all stakeholders.**
