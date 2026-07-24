@@ -4,7 +4,7 @@
 
 # AI-Powered Community Platform for Transforming Verified Local Problems into Startup Opportunities
 
-### 🏆 Domain: Open Innovation
+### 🏆 Domain: Open Innovations
 
 *"Every Verified Community Problem is a Potential Startup Opportunity."*
 
