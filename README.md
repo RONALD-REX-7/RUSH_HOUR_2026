@@ -428,6 +428,13 @@ Stores:
 - Project Photos
 
 ---
+# 🏗️ System Architecture
+
+<p align="center">
+  <img src="docs/images/architecture.png" alt="ProblemChain Architecture" width="900">
+</p>
+
+The above architecture illustrates how citizens, entrepreneurs, administrators, the AI engine, backend services, database, and cloud storage interact within the ProblemChain platform.
 
 # 🔄 Detailed Workflow
 
