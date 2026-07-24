@@ -361,6 +361,13 @@ Users
 ```
 
 ---
+## 🏗️ System Architecture
+
+The following diagram illustrates the overall architecture of **ProblemChain**, showing the interaction between the frontend, backend, AI/ML modules, database, cloud services, and users.
+
+<p align="center">
+  <img src="Details/System%20Architecture.png" alt="ProblemChain System Architecture" width="1000">
+</p>
 
 ## 🏛️ Architecture Layers
 
@@ -438,7 +445,7 @@ Stores:
 # 🏗️ System Architecture
 
 <p align="center">
-  <img src="docs/images/architecture.png" alt="ProblemChain Architecture" width="900">
+  <img src="docs/images/workflow.png" alt="ProblemChain Architecture" width="900">
 </p>
 
 The above architecture illustrates how citizens, entrepreneurs, administrators, the AI engine, backend services, database, and cloud storage interact within the ProblemChain platform.
