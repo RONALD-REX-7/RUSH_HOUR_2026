@@ -307,12 +307,12 @@ ProblemChain ensures:
 | Version Control | Git & GitHub |
 
 ---
-## 🔄 ProblemChain Workflow
+## 🔄 System Workflow
 
-The following workflow illustrates how ProblemChain transforms verified local problems into startup opportunities.
+The following diagram illustrates the complete workflow of **ProblemChain**, from user registration to project implementation and progress tracking.
 
 <p align="center">
-  <img src="Details/workflow" alt="ProblemChain Workflow" width="1000">
+  <img src="Details/workflow.png" alt="ProblemChain Workflow" width="1000">
 </p>
 
 # 💻 Why ProblemChain?
