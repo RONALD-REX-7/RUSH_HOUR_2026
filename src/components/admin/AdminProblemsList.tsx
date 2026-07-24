@@ -24,7 +24,10 @@ export const AdminProblemsList: React.FC = () => {
   const [selectedEntrepreneurId, setSelectedEntrepreneurId] = useState<string>('');
   const [detailProblem, setDetailProblem] = useState<Problem | null>(null);
 
-  const filteredProblems = problems.filter((p) => {
+  const safeProblems = problems || [];
+  const safeEntrepreneurs = entrepreneurs || [];
+
+  const filteredProblems = safeProblems.filter((p) => {
     const matchesSearch =
       p.title.toLowerCase().includes(search.toLowerCase()) ||
       p.id.toLowerCase().includes(search.toLowerCase()) ||
@@ -37,7 +40,7 @@ export const AdminProblemsList: React.FC = () => {
     return matchesSearch && matchesStatus && matchesCategory;
   });
 
-  const categories = ['All', ...Array.from(new Set(problems.map((p) => p.category)))];
+  const categories = ['All', ...Array.from(new Set(safeProblems.map((p) => p.category)))];
 
   const handleConfirmAssign = (e: React.FormEvent) => {
     e.preventDefault();

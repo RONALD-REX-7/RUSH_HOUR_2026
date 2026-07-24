@@ -16,7 +16,8 @@ export type Category =
   | 'Daily Life Issues'
   | 'Healthcare'
   | 'Education'
-  | 'Others';
+  | 'Others'
+  | (string & {});
 
 export interface User {
   id: string;
@@ -27,6 +28,7 @@ export interface User {
   phone: string;
   address: string;
   bio?: string;
+  domain?: string;
   skills?: string[];
   rating?: number;
   completedJobs?: number;

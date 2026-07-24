@@ -12,6 +12,7 @@ import {
   Shield,
   Briefcase,
   Users,
+  Globe,
 } from 'lucide-react';
 
 export const ProfilePage: React.FC = () => {
@@ -22,6 +23,7 @@ export const ProfilePage: React.FC = () => {
   const [phone, setPhone] = useState(currentUser?.phone || '');
   const [address, setAddress] = useState(currentUser?.address || '');
   const [bio, setBio] = useState(currentUser?.bio || '');
+  const [domain, setDomain] = useState(currentUser?.domain || '');
   const [avatar, setAvatar] = useState(currentUser?.avatar || '');
 
   // Password fields
@@ -33,7 +35,7 @@ export const ProfilePage: React.FC = () => {
 
   const handleUpdateProfile = (e: React.FormEvent) => {
     e.preventDefault();
-    updateUserProfile({ name, email, phone, address, bio, avatar });
+    updateUserProfile({ name, email, phone, address, bio, domain, avatar });
     setToastMessage('Profile details updated successfully!');
     setTimeout(() => setToastMessage(null), 3000);
   };
@@ -95,6 +97,12 @@ export const ProfilePage: React.FC = () => {
               <RoleIcon className="w-3 h-3 mr-1" />
               {currentUser?.role}
             </span>
+            {domain && (
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200">
+                <Globe className="w-3 h-3 mr-1" />
+                {domain}
+              </span>
+            )}
           </div>
           <p className="text-xs text-slate-500">{email}</p>
           <p className="text-xs text-slate-600 dark:text-slate-400 max-w-md pt-1">{bio}</p>
@@ -110,7 +118,9 @@ export const ProfilePage: React.FC = () => {
 
           <form onSubmit={handleUpdateProfile} className="space-y-4 text-xs">
             <div>
-              <label className="block font-semibold mb-1">Full Name</label>
+              <label className="block font-semibold mb-1">
+                Full Name <span className="text-rose-500 font-bold ml-0.5">*</span>
+              </label>
               <input
                 type="text"
                 required
@@ -120,9 +130,25 @@ export const ProfilePage: React.FC = () => {
               />
             </div>
 
+            <div>
+              <label className="block font-semibold mb-1">Domain Details (e.g., Domain Name / Specialization)</label>
+              <div className="relative">
+                <Globe className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+                <input
+                  type="text"
+                  value={domain}
+                  onChange={(e) => setDomain(e.target.value)}
+                  placeholder="e.g. Civil Infrastructure, Electrical Power Systems, Environmental Services"
+                  className="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-medium"
+                />
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold mb-1">Email Address</label>
+                <label className="block font-semibold mb-1">
+                  Email Address <span className="text-rose-500 font-bold ml-0.5">*</span>
+                </label>
                 <input
                   type="email"
                   required
@@ -182,7 +208,9 @@ export const ProfilePage: React.FC = () => {
 
           <form onSubmit={handleChangePassword} className="space-y-4 text-xs">
             <div>
-              <label className="block font-semibold mb-1">Current Password</label>
+              <label className="block font-semibold mb-1">
+                Current Password <span className="text-rose-500 font-bold ml-0.5">*</span>
+              </label>
               <input
                 type="password"
                 required
@@ -193,7 +221,9 @@ export const ProfilePage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block font-semibold mb-1">New Password</label>
+              <label className="block font-semibold mb-1">
+                New Password <span className="text-rose-500 font-bold ml-0.5">*</span>
+              </label>
               <input
                 type="password"
                 required
@@ -204,7 +234,9 @@ export const ProfilePage: React.FC = () => {
             </div>
 
             <div>
-              <label className="block font-semibold mb-1">Confirm New Password</label>
+              <label className="block font-semibold mb-1">
+                Confirm New Password <span className="text-rose-500 font-bold ml-0.5">*</span>
+              </label>
               <input
                 type="password"
                 required

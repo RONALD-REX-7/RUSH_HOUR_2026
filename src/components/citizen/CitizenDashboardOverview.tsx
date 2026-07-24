@@ -51,7 +51,7 @@ export const CitizenDashboardOverview: React.FC = () => {
       </div>
 
       {/* Dashboard Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <StatCard
           title="Total Problems Submitted"
           value={totalSubmitted}
@@ -72,13 +72,6 @@ export const CitizenDashboardOverview: React.FC = () => {
           icon={Clock}
           color="purple"
           description="Active repair crews"
-        />
-        <StatCard
-          title="Problems Solved"
-          value={solved}
-          icon={CheckCircle2}
-          color="green"
-          description="Verified resolved"
         />
       </div>
 

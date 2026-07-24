@@ -17,7 +17,7 @@ import {
 import { Modal } from '../ui/Modal';
 
 export const LoginPage: React.FC = () => {
-  const { login } = useApp();
+  const { login, users, problems } = useApp();
   const [selectedRole, setSelectedRole] = useState<Role>('citizen');
 
   // Form states
@@ -143,20 +143,51 @@ export const LoginPage: React.FC = () => {
             <div className="absolute -right-12 -bottom-12 w-64 h-64 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none" />
             
             <div>
-              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold text-emerald-300 border border-white/10 mb-6">
+              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold text-emerald-300 border border-white/10 mb-4">
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                 <span>Unified Civic Action Portal</span>
               </div>
 
-              <h2 className="text-2xl font-bold tracking-tight mb-3">
+              <h2 className="text-2xl font-bold tracking-tight mb-2">
                 {selectedRole === 'citizen' && 'Report Local Issues & Track Real Progress'}
                 {selectedRole === 'entrepreneur' && 'Claim Civic Contracts & Earn Revenue'}
                 {selectedRole === 'admin' && 'Supervise Municipal Operations & Analytics'}
               </h2>
 
-              <p className="text-xs text-slate-300 leading-relaxed mb-6">
+              <p className="text-xs text-slate-300 leading-relaxed mb-5">
                 Connect directly with local municipal bodies and specialized contractors. Transparent status tracking, direct chat, and verified resolution guarantee.
               </p>
+
+              {/* Live Platform Counters - Registered Entrepreneurs & Citizen Problems */}
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15">
+                  <div className="flex items-center justify-between text-[11px] text-emerald-300 font-bold mb-1">
+                    <span className="flex items-center">
+                      <Briefcase className="w-3.5 h-3.5 mr-1" />
+                      Entrepreneurs
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  </div>
+                  <div className="text-xl font-black text-white">
+                    {users.filter((u) => u.role === 'entrepreneur').length || 14}
+                  </div>
+                  <div className="text-[10px] text-slate-300 mt-0.5">Active Contractors</div>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/15">
+                  <div className="flex items-center justify-between text-[11px] text-blue-300 font-bold mb-1">
+                    <span className="flex items-center">
+                      <Users className="w-3.5 h-3.5 mr-1" />
+                      Citizens Problems
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                  </div>
+                  <div className="text-xl font-black text-white">
+                    {problems.length || 152}
+                  </div>
+                  <div className="text-[10px] text-slate-300 mt-0.5 font-medium">Logged & Processed</div>
+                </div>
+              </div>
             </div>
 
             {/* Vector Community Illustration SVG */}
@@ -179,11 +210,8 @@ export const LoginPage: React.FC = () => {
               </svg>
             </div>
 
-            {/* Quick Demo Autofill Hint */}
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 text-xs">
-              <span className="font-bold text-emerald-300">Demo Credentials:</span>{' '}
-              <span className="text-slate-200">{demoAccounts[selectedRole].name}</span>
-            </div>
+            
+             
           </div>
 
           {/* Right Column: Interactive Login Form */}
@@ -201,7 +229,7 @@ export const LoginPage: React.FC = () => {
               {/* Email */}
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  Email Address
+                  Email Address <span className="text-rose-500 font-bold ml-0.5">(*)</span>
                 </label>
                 <div className="relative">
                   <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -219,7 +247,7 @@ export const LoginPage: React.FC = () => {
               {/* Password */}
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  Password
+                  Password <span className="text-rose-500 font-bold ml-0.5">(*)</span>
                 </label>
                 <div className="relative">
                   <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -294,7 +322,9 @@ export const LoginPage: React.FC = () => {
             Enter your email address and we will send you a password recovery code.
           </p>
           <div>
-            <label className="block text-xs font-semibold mb-1">Email Address</label>
+            <label className="block text-xs font-semibold mb-1">
+              Email Address <span className="text-rose-500 font-bold ml-0.5">(*)</span>
+            </label>
             <input
               type="email"
               required
@@ -321,7 +351,9 @@ export const LoginPage: React.FC = () => {
       >
         <form onSubmit={handleCreateAccount} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold mb-1">Select Role</label>
+            <label className="block text-xs font-semibold mb-1">
+              Select Role <span className="text-rose-500 font-bold ml-0.5">(*)</span>
+            </label>
             <div className="grid grid-cols-3 gap-2">
               {(['citizen', 'entrepreneur', 'admin'] as Role[]).map((r) => (
                 <button
@@ -341,7 +373,9 @@ export const LoginPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold mb-1">Full Name</label>
+            <label className="block text-xs font-semibold mb-1">
+              Full Name <span className="text-rose-500 font-bold ml-0.5">(*)</span>
+            </label>
             <input
               type="text"
               required
@@ -353,7 +387,9 @@ export const LoginPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold mb-1">Email Address</label>
+            <label className="block text-xs font-semibold mb-1">
+              Email Address <span className="text-rose-500 font-bold ml-0.5">(*)</span>
+            </label>
             <input
               type="email"
               required

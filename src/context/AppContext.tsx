@@ -34,6 +34,8 @@ interface AppContextType {
   logout: () => void;
   switchRole: (role: Role) => void;
   reportProblem: (data: Partial<Problem>) => Problem;
+  editProblem: (problemId: string, updatedData: Partial<Problem>) => void;
+  deleteProblem: (problemId: string) => void;
   acceptProblem: (problemId: string) => void;
   assignEntrepreneur: (problemId: string, entrepreneurId: string) => void;
   updateProblemStatus: (problemId: string, status: ProblemStatus, note?: string) => void;
@@ -66,7 +68,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [problems, setProblems] = useState<Problem[]>(() => {
     const saved = localStorage.getItem('pc_problems');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) { /* ignore */ }
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (e) { /* ignore */ }
     }
     return mockProblems;
   });
@@ -74,7 +79,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [chats, setChats] = useState<ChatMessage[]>(() => {
     const saved = localStorage.getItem('pc_chats');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) { /* ignore */ }
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (e) { /* ignore */ }
     }
     return mockChats;
   });
@@ -82,7 +90,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [notifications, setNotifications] = useState<NotificationItem[]>(() => {
     const saved = localStorage.getItem('pc_notifications');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) { /* ignore */ }
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (e) { /* ignore */ }
     }
     return mockNotifications;
   });
@@ -194,6 +205,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setNotifications((prev) => [newNotif, ...prev]);
 
     return newProblem;
+  };
+
+  // Edit Problem
+  const editProblem = (problemId: string, updatedData: Partial<Problem>) => {
+    setProblems((prev) =>
+      prev.map((p) => {
+        if (p.id === problemId) {
+          return {
+            ...p,
+            ...updatedData,
+          };
+        }
+        return p;
+      })
+    );
+  };
+
+  // Delete Problem
+  const deleteProblem = (problemId: string) => {
+    setProblems((prev) => prev.filter((p) => p.id !== problemId));
   };
 
   // Accept Problem by Entrepreneur
@@ -416,11 +447,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCurrentUser(newObj);
   };
 
-  const unreadNotificationCount = notifications.filter(
+  const unreadNotificationCount = (notifications || []).filter(
     (n) => currentUser && n.userId === currentUser.id && !n.read
   ).length;
 
-  const entrepreneurs = mockUsers.filter((u) => u.role === 'entrepreneur');
+  const entrepreneurs = (mockUsers || []).filter((u) => u.role === 'entrepreneur');
 
   return (
     <AppContext.Provider
@@ -441,6 +472,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         logout,
         switchRole,
         reportProblem,
+        editProblem,
+        deleteProblem,
         acceptProblem,
         assignEntrepreneur,
         updateProblemStatus,

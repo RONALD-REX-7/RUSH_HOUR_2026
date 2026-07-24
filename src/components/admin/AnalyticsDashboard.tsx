@@ -48,11 +48,11 @@ export const AnalyticsDashboard: React.FC = () => {
   const avgResolutionTime = '18.4 hrs';
   const successRate = '94.2%';
 
-  // Data for Bar Chart: Problems Solved by Entrepreneur
-  const entrepreneurSolvedData = entrepreneurPerformances.map((ent) => ({
-    name: ent.name.split(' ')[0],
-    solved: ent.completedJobs,
-    rating: ent.rating,
+  // Data for Bar Chart: Category Resolution Volume
+  const categoryResolutionData = mockCategoryData.map((cat) => ({
+    name: cat.category.split(' ')[0],
+    count: cat.count,
+    color: cat.color,
   }));
 
   return (
@@ -64,7 +64,7 @@ export const AnalyticsDashboard: React.FC = () => {
             Municipal Reports & Analytics
           </h2>
           <p className="text-xs text-slate-500">
-            Real-time urban infrastructure resolution performance metrics & location heatmap
+            Real-time urban infrastructure resolution performance metrics & world location heatmap
           </p>
         </div>
       </div>
@@ -161,21 +161,21 @@ export const AnalyticsDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* 2. Bar Chart: Problems Solved by Entrepreneur */}
+        {/* 2. Bar Chart: Resolution Volume by Sector Category */}
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs">
           <div className="flex items-center justify-between mb-4">
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                2. Problems Solved by Entrepreneur
+                2. Resolution Volume by Category
               </h3>
               <p className="text-[11px] text-slate-500">
-                Completed work order count by contractor agency
+                Logged civic maintenance volume breakdown across urban departments
               </p>
             </div>
           </div>
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={entrepreneurSolvedData}>
+              <BarChart data={categoryResolutionData}>
                 <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
                 <XAxis dataKey="name" stroke="#94a3b8" fontSize={11} />
                 <YAxis stroke="#94a3b8" fontSize={11} />
@@ -187,7 +187,7 @@ export const AnalyticsDashboard: React.FC = () => {
                     fontSize: '12px',
                   }}
                 />
-                <Bar dataKey="solved" fill="#2563eb" radius={[6, 6, 0, 0]} name="Solved Jobs" />
+                <Bar dataKey="count" fill="#2563eb" radius={[6, 6, 0, 0]} name="Reported Issues" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -295,81 +295,15 @@ export const AnalyticsDashboard: React.FC = () => {
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-              Location Analytics & Geographic Heatmap
+              Location Analytics & World Geographic Heatmap
             </h3>
             <p className="text-xs text-slate-500">
-              Interactive geographic problem distribution across Metro City sectors
+              Interactive geographic problem distribution across world sectors
             </p>
           </div>
         </div>
 
         <LocationMap problems={problems} />
-      </div>
-
-      {/* Entrepreneur Performance Table */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
-        <div>
-          <h3 className="text-base font-bold text-slate-900 dark:text-white">
-            Entrepreneur Performance Index
-          </h3>
-          <p className="text-xs text-slate-500">
-            Audit contractor execution, rating benchmarks, revenue generation, and completion velocity
-          </p>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-slate-500 uppercase font-bold text-[10px]">
-              <tr>
-                <th className="py-3 px-4">Entrepreneur</th>
-                <th className="py-3 px-4">Specialization</th>
-                <th className="py-3 px-4">Jobs Completed</th>
-                <th className="py-3 px-4">Estimated Revenue</th>
-                <th className="py-3 px-4">Monthly Earnings</th>
-                <th className="py-3 px-4">Performance Score</th>
-                <th className="py-3 px-4">Customer Rating</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-              {entrepreneurPerformances.map((ent) => (
-                <tr key={ent.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40">
-                  <td className="py-3.5 px-4">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={ent.avatar}
-                        alt={ent.name}
-                        className="w-8 h-8 rounded-full object-cover"
-                      />
-                      <span className="font-bold text-slate-900 dark:text-white">
-                        {ent.name}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">
-                    {ent.skills.join(', ')}
-                  </td>
-                  <td className="py-3.5 px-4 font-bold text-purple-600 dark:text-purple-400">
-                    {ent.completedJobs} Jobs
-                  </td>
-                  <td className="py-3.5 px-4 text-slate-900 dark:text-white font-mono">
-                    ${ent.totalRevenue.toLocaleString()}
-                  </td>
-                  <td className="py-3.5 px-4 font-bold text-emerald-600 font-mono">
-                    ${ent.monthlyEarnings.toLocaleString()}
-                  </td>
-                  <td className="py-3.5 px-4">
-                    <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
-                      {ent.performanceScore}% Grade
-                    </span>
-                  </td>
-                  <td className="py-3.5 px-4 font-bold text-amber-500">
-                    ★ {ent.rating}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Problem } from '../../types';
-import { MapPin, Flame, Layers, Navigation, CheckCircle2, AlertCircle } from 'lucide-react';
+import { MapPin, Flame, Globe, Navigation, CheckCircle2, AlertCircle } from 'lucide-react';
 import { PriorityBadge, StatusBadge } from './Badge';
 
 interface LocationMapProps {
@@ -9,7 +9,7 @@ interface LocationMapProps {
 }
 
 export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProblem }) => {
-  const [viewMode, setViewMode] = useState<'pins' | 'heatmap'>('pins');
+  const [viewMode, setViewMode] = useState<'pins' | 'heatmap' | 'world'>('world');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [activeProblem, setActiveProblem] = useState<Problem | null>(null);
 
@@ -36,6 +36,17 @@ export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProb
       <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-50/50 dark:bg-slate-800/50">
         <div className="flex items-center space-x-2">
           <button
+            onClick={() => setViewMode('world')}
+            className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+              viewMode === 'world'
+                ? 'bg-emerald-600 text-white shadow-xs'
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+            }`}
+          >
+            <Globe className="w-3.5 h-3.5 mr-1.5" />
+            World Map Location View
+          </button>
+          <button
             onClick={() => setViewMode('pins')}
             className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               viewMode === 'pins'
@@ -44,7 +55,7 @@ export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProb
             }`}
           >
             <MapPin className="w-3.5 h-3.5 mr-1.5" />
-            Problem Pinpoints ({filteredProblems.length})
+            Sector Pinpoints ({filteredProblems.length})
           </button>
           <button
             onClick={() => setViewMode('heatmap')}
@@ -114,9 +125,91 @@ export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProb
             </svg>
           </div>
 
-          {/* Pins or Heatmap overlay */}
+          {/* Pins, Heatmap, or World Map overlay */}
           <div className="relative w-full h-[380px] flex items-center justify-center">
-            {viewMode === 'heatmap' ? (
+            {viewMode === 'world' ? (
+              /* World Map View */
+              <div className="relative w-full h-full flex flex-col justify-between p-2">
+                {/* World Map SVG Vector Background */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-30 dark:opacity-40 pointer-events-none">
+                  <svg viewBox="0 0 1000 500" className="w-full h-full text-slate-400 dark:text-slate-600 fill-current">
+                    {/* Simplified World Map Continents */}
+                    {/* North America */}
+                    <path d="M 150 120 C 180 80, 280 90, 290 140 C 270 200, 180 260, 120 220 C 110 180, 130 140, 150 120 Z" />
+                    {/* South America */}
+                    <path d="M 280 270 C 320 280, 360 340, 320 440 C 280 460, 250 420, 260 340 C 260 300, 270 280, 280 270 Z" />
+                    {/* Europe */}
+                    <path d="M 480 110 C 530 90, 580 120, 560 170 C 510 180, 470 160, 480 110 Z" />
+                    {/* Africa */}
+                    <path d="M 470 200 C 560 200, 590 280, 550 380 C 490 400, 460 320, 470 200 Z" />
+                    {/* Asia */}
+                    <path d="M 600 100 C 750 70, 880 130, 850 240 C 750 260, 620 220, 600 100 Z" />
+                    {/* Australia */}
+                    <path d="M 780 340 C 850 330, 890 380, 840 430 C 780 440, 760 390, 780 340 Z" />
+                  </svg>
+                </div>
+
+                {/* World Map Grid Lines */}
+                <div className="absolute inset-0 border border-dashed border-emerald-500/20 rounded-xl pointer-events-none flex flex-col justify-between p-4">
+                  <div className="flex justify-between text-[9px] font-mono text-emerald-600/70 dark:text-emerald-400/70">
+                    <span>LAT 60°N (Arctic)</span>
+                    <span>WORLD LOCATION MAP ANALYTICS</span>
+                    <span>LONG 120°E</span>
+                  </div>
+                  <div className="border-t border-dashed border-emerald-500/20 my-auto" />
+                  <div className="flex justify-between text-[9px] font-mono text-emerald-600/70 dark:text-emerald-400/70">
+                    <span>LAT 30°S (Southern Ocean)</span>
+                    <span>EQUATOR 0°</span>
+                    <span>METRO GLOBAL HUB</span>
+                  </div>
+                </div>
+
+                {/* World Regional Hotspot Pins */}
+                <div className="relative z-10 w-full h-full">
+                  {filteredProblems.map((p, idx) => {
+                    // Spread coordinates across the world map grid
+                    const leftPct = 18 + ((idx * 19) % 68);
+                    const topPct = 22 + ((idx * 23) % 58);
+                    const isSelected = activeProblem?.id === p.id;
+
+                    const pinColor =
+                      p.status === 'Solved'
+                        ? 'bg-emerald-500 border-emerald-200'
+                        : p.status === 'In Progress'
+                        ? 'bg-indigo-500 border-indigo-200'
+                        : 'bg-rose-500 border-rose-200';
+
+                    return (
+                      <div
+                        key={`world-${p.id}`}
+                        style={{ left: `${leftPct}%`, top: `${topPct}%` }}
+                        className="absolute -translate-x-1/2 -translate-y-1/2 group z-20"
+                      >
+                        <button
+                          onClick={() => {
+                            setActiveProblem(p);
+                            if (onSelectProblem) onSelectProblem(p);
+                          }}
+                          className={`relative flex items-center justify-center w-8 h-8 rounded-full border-2 text-white shadow-xl transition-transform transform hover:scale-125 ${pinColor} ${
+                            isSelected ? 'ring-4 ring-emerald-400 scale-125' : ''
+                          }`}
+                        >
+                          <Globe className="w-4 h-4" />
+                        </button>
+
+                        {/* Tooltip on Hover */}
+                        <div className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 hidden group-hover:flex flex-col items-center z-30 pointer-events-none">
+                          <div className="bg-slate-900 text-white text-xs px-2.5 py-1.5 rounded-lg whitespace-nowrap shadow-xl border border-slate-700">
+                            <span className="font-bold text-emerald-400">{p.id}</span>: {p.title}
+                            <div className="text-[10px] text-slate-300">🌍 {p.location}</div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : viewMode === 'heatmap' ? (
               /* Heatmap Circles */
               <div className="relative w-full h-full">
                 {filteredProblems.map((p, idx) => {

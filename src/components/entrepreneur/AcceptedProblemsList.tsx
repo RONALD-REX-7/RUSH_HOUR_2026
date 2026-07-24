@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { PriorityBadge, StatusBadge } from '../ui/Badge';
+import { StatusBadge } from '../ui/Badge';
 import { Problem } from '../../types';
 import {
   MessageSquare,
@@ -14,7 +14,11 @@ import {
 import { Modal } from '../ui/Modal';
 import { EmptyState } from '../ui/EmptyState';
 
-export const AcceptedProblemsList: React.FC = () => {
+interface AcceptedProblemsListProps {
+  viewMode?: 'accepted_problems' | 'my_work';
+}
+
+export const AcceptedProblemsList: React.FC<AcceptedProblemsListProps> = ({ viewMode = 'accepted_problems' }) => {
   const {
     problems,
     currentUser,
@@ -26,11 +30,17 @@ export const AcceptedProblemsList: React.FC = () => {
   const [solveModalProblem, setSolveModalProblem] = useState<Problem | null>(null);
   const [completionNotes, setCompletionNotes] = useState('');
 
-  const myAccepted = problems.filter(
-    (p) =>
-      p.assignedEntrepreneurId === currentUser?.id &&
-      (p.status === 'Accepted' || p.status === 'In Progress')
-  );
+  // Strict view mode filter
+  const myFiltered = problems.filter((p) => {
+    if (p.assignedEntrepreneurId !== currentUser?.id) return false;
+    if (viewMode === 'accepted_problems') {
+      return p.status === 'Accepted';
+    }
+    if (viewMode === 'my_work') {
+      return p.status === 'In Progress';
+    }
+    return p.status === 'Accepted' || p.status === 'In Progress';
+  });
 
   const handleConfirmSolved = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,16 +52,20 @@ export const AcceptedProblemsList: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {myAccepted.length === 0 ? (
+      {myFiltered.length === 0 ? (
         <EmptyState
-          title="No Accepted Problems"
-          description="You don't have any accepted or active work orders at the moment."
+          title={viewMode === 'my_work' ? 'No Active Work In Progress' : 'No Accepted Problems'}
+          description={
+            viewMode === 'my_work'
+              ? 'You do not have any problems currently in the solving process.'
+              : 'You do not have any accepted problems awaiting work start.'
+          }
           actionLabel="Browse Available Problems"
           onAction={() => setActiveTab('available_problems')}
         />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {myAccepted.map((p) => (
+          {myFiltered.map((p) => (
             <div
               key={p.id}
               className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 p-5 shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
@@ -61,7 +75,7 @@ export const AcceptedProblemsList: React.FC = () => {
                   <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-md border border-emerald-200/50">
                     {p.id}
                   </span>
-                  <PriorityBadge priority={p.priority} />
+                  <StatusBadge status={p.status} />
                 </div>
 
                 <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-2 line-clamp-1">
@@ -98,7 +112,9 @@ export const AcceptedProblemsList: React.FC = () => {
 
               {/* Actions */}
               <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2">
-                <StatusBadge status={p.status} />
+                <span className="text-xs font-semibold text-slate-500">
+                  {p.category}
+                </span>
 
                 <div className="flex items-center space-x-2">
                   <button
@@ -118,11 +134,11 @@ export const AcceptedProblemsList: React.FC = () => {
                       className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-xs transition-colors flex items-center"
                     >
                       <Play className="w-3.5 h-3.5 mr-1" />
-                      Mark In Progress
+                      Start Solving (In Progress)
                     </button>
                   )}
 
-                  {(p.status === 'Accepted' || p.status === 'In Progress') && (
+                  {p.status === 'In Progress' && (
                     <button
                       onClick={() => setSolveModalProblem(p)}
                       className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-colors flex items-center"

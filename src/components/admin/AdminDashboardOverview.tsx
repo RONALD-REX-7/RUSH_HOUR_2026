@@ -19,12 +19,15 @@ import {
 export const AdminDashboardOverview: React.FC = () => {
   const { problems, entrepreneurs, setActiveTab, setSelectedProblemForChat } = useApp();
 
-  const totalProblems = problems.length;
-  const solved = problems.filter((p) => p.status === 'Solved').length;
-  const pending = problems.filter((p) => p.status === 'Pending').length;
-  const inProgress = problems.filter((p) => p.status === 'In Progress').length;
+  const safeProblems = problems || [];
+  const safeEntrepreneurs = entrepreneurs || [];
+
+  const totalProblems = safeProblems.length;
+  const solved = safeProblems.filter((p) => p.status === 'Solved').length;
+  const pending = safeProblems.filter((p) => p.status === 'Pending').length;
+  const inProgress = safeProblems.filter((p) => p.status === 'In Progress').length;
   const totalCitizens = 148;
-  const totalEntrepreneurs = entrepreneurs.length || 3;
+  const totalEntrepreneurs = safeEntrepreneurs.length || 3;
   const activeUsers = 182;
 
   return (
@@ -52,7 +55,7 @@ export const AdminDashboardOverview: React.FC = () => {
             <span>View Analytics</span>
           </button>
           <button
-            onClick={() => setActiveTab('assign_problems')}
+            onClick={() => setActiveTab('entrepreneurs')}
             className="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-colors"
           >
             <UserCheck className="w-4 h-4" />
@@ -62,34 +65,13 @@ export const AdminDashboardOverview: React.FC = () => {
       </div>
 
       {/* Dashboard Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        <StatCard
-          title="Total Citizens"
-          value={totalCitizens}
-          icon={Users}
-          color="blue"
-          description="Registered reporters"
-        />
-        <StatCard
-          title="Total Entrepreneurs"
-          value={totalEntrepreneurs}
-          icon={Briefcase}
-          color="green"
-          description="Verified contractors"
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <StatCard
           title="Total Problems"
           value={totalProblems}
           icon={AlertCircle}
           color="purple"
           description="Cumulative submissions"
-        />
-        <StatCard
-          title="Problems Solved"
-          value={solved}
-          icon={CheckCircle2}
-          color="green"
-          description="Completed repairs"
         />
         <StatCard
           title="Pending Problems"
@@ -99,11 +81,11 @@ export const AdminDashboardOverview: React.FC = () => {
           description="Awaiting assignment"
         />
         <StatCard
-          title="Active Users"
-          value={activeUsers}
+          title="In Progress Problems"
+          value={inProgress}
           icon={Activity}
           color="amber"
-          description="Live online citizens"
+          description="Under active repair"
         />
       </div>
 
@@ -131,7 +113,7 @@ export const AdminDashboardOverview: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            {problems
+            {safeProblems
               .filter((p) => p.status === 'Pending')
               .slice(0, 3)
               .map((p) => (
@@ -152,8 +134,8 @@ export const AdminDashboardOverview: React.FC = () => {
                   </div>
 
                   <button
-                    onClick={() => setActiveTab('assign_problems')}
-                    className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shrink-0 shadow-xs"
+                    onClick={() => setActiveTab('entrepreneurs')}
+                    className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shrink-0 shadow-xs cursor-pointer"
                   >
                     Assign Contractor
                   </button>

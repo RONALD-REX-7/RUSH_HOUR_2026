@@ -25,7 +25,6 @@ import { AdminProblemsList } from './components/admin/AdminProblemsList';
 import { AssignEntrepreneurView } from './components/admin/AssignEntrepreneurView';
 import { ChatMonitoringView } from './components/admin/ChatMonitoringView';
 import { AnalyticsDashboard } from './components/admin/AnalyticsDashboard';
-import { AdminSettingsView } from './components/admin/AdminSettingsView';
 
 // Common Views
 import { NotificationsPage } from './components/common/NotificationsPage';
@@ -52,11 +51,11 @@ const AppContent: React.FC = () => {
         case 'report_problem':
           return <ReportProblemForm />;
         case 'my_problems':
-          return <MyProblemsList />;
+          return <MyProblemsList viewMode="my_problems" />;
         case 'accepted_problems':
-          return <MyProblemsList statusFilterOverride="Accepted" />;
+          return <MyProblemsList viewMode="accepted_problems" statusFilterOverride="Accepted" />;
         case 'solved_problems':
-          return <MyProblemsList statusFilterOverride="Solved" />;
+          return <MyProblemsList viewMode="solved_problems" statusFilterOverride="Solved" />;
         case 'chat':
           return <CitizenChatView />;
         default:
@@ -72,8 +71,9 @@ const AppContent: React.FC = () => {
         case 'available_problems':
           return <AvailableProblemsList />;
         case 'accepted_problems':
+          return <AcceptedProblemsList viewMode="accepted_problems" />;
         case 'my_work':
-          return <AcceptedProblemsList />;
+          return <AcceptedProblemsList viewMode="my_work" />;
         case 'solved_problems':
           return <SolvedProblemsList />;
         case 'chat':
@@ -99,8 +99,6 @@ const AppContent: React.FC = () => {
           return <AnalyticsDashboard />;
         case 'chat_monitoring':
           return <ChatMonitoringView />;
-        case 'settings':
-          return <AdminSettingsView />;
         default:
           return <AdminDashboardOverview />;
       }

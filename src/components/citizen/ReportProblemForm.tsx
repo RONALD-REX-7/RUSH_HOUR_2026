@@ -18,6 +18,7 @@ export const ReportProblemForm: React.FC = () => {
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<Category>('Roads');
+  const [customCategory, setCustomCategory] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [priority, setPriority] = useState<Priority>('Medium');
@@ -59,13 +60,18 @@ export const ReportProblemForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !description.trim() || !location.trim()) return;
+    if (category === 'Others' && !customCategory.trim()) return;
 
     setIsSubmitting(true);
+
+    const finalCategory = category === 'Others' && customCategory.trim()
+      ? customCategory.trim()
+      : category;
 
     setTimeout(() => {
       reportProblem({
         title,
-        category,
+        category: finalCategory,
         description,
         location,
         priority,
@@ -114,7 +120,7 @@ export const ReportProblemForm: React.FC = () => {
             {/* Title */}
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Problem Title <span className="text-rose-500">*</span>
+                Problem Title <span className="text-rose-500 font-bold ml-0.5">(*)</span>
               </label>
               <input
                 type="text"
@@ -130,7 +136,7 @@ export const ReportProblemForm: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                  Category <span className="text-rose-500">*</span>
+                  Category <span className="text-rose-500 font-bold ml-0.5">(*)</span>
                 </label>
                 <select
                   value={category}
@@ -143,11 +149,24 @@ export const ReportProblemForm: React.FC = () => {
                     </option>
                   ))}
                 </select>
+
+                {category === 'Others' && (
+                  <div className="mt-2 animate-in fade-in slide-in-from-top-1">
+                    <input
+                      type="text"
+                      required
+                      value={customCategory}
+                      onChange={(e) => setCustomCategory(e.target.value)}
+                      placeholder="Please specify custom category..."
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                )}
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                  Priority Level <span className="text-rose-500">*</span>
+                  Priority Level <span className="text-rose-500 font-bold ml-0.5">(*)</span>
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   {(['Low', 'Medium', 'High'] as Priority[]).map((p) => (
@@ -175,7 +194,7 @@ export const ReportProblemForm: React.FC = () => {
             {/* Location */}
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Location Address / Sector Landmark <span className="text-rose-500">*</span>
+                Location Address / Sector Landmark <span className="text-rose-500 font-bold ml-0.5">(*)</span>
               </label>
               <div className="relative">
                 <MapPin className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -193,7 +212,7 @@ export const ReportProblemForm: React.FC = () => {
             {/* Description */}
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Detailed Description <span className="text-rose-500">*</span>
+                Detailed Description <span className="text-rose-500 font-bold ml-0.5">(*)</span>
               </label>
               <textarea
                 required

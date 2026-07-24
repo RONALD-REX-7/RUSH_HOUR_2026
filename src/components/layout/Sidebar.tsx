@@ -16,7 +16,6 @@ import {
   UserCheck,
   BarChart3,
   Eye,
-  Settings,
   FolderOpen,
   MapPin,
 } from 'lucide-react';
@@ -63,10 +62,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpenMobile, onCloseMobile })
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'citizen_problems', label: 'Citizen Problems', icon: AlertCircle },
     { id: 'entrepreneurs', label: 'Entrepreneurs', icon: Users },
-    { id: 'assign_problems', label: 'Assign Problems', icon: UserCheck },
     { id: 'reports', label: 'Reports & Analytics', icon: BarChart3 },
     { id: 'chat_monitoring', label: 'Chat Monitoring', icon: Eye },
-    { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
   const navItems = {

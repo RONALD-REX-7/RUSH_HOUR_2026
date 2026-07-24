@@ -4,21 +4,11 @@ import {
   Bell,
   Sun,
   Moon,
-  Search,
   User as UserIcon,
   LogOut,
-  Shield,
-  Briefcase,
-  Users,
-  CheckCircle,
-  Clock,
-  MessageSquare,
   Menu,
-  X,
-  ChevronDown,
   Layers,
 } from 'lucide-react';
-import { Role } from '../../types';
 
 interface NavbarProps {
   onToggleMobileSidebar: () => void;
@@ -27,8 +17,6 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
   const {
     currentUser,
-    currentRole,
-    switchRole,
     themeMode,
     toggleTheme,
     notifications,
@@ -41,21 +29,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
 
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const [showRoleSwitcher, setShowRoleSwitcher] = useState(false);
-
-  const roleBadgeStyle = {
-    citizen: 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 border-blue-200 dark:border-blue-800',
-    entrepreneur: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800',
-    admin: 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 border-purple-200 dark:border-purple-800',
-  }[currentRole];
-
-  const roleIcon = {
-    citizen: Users,
-    entrepreneur: Briefcase,
-    admin: Shield,
-  }[currentRole];
-
-  const RoleIconComponent = roleIcon;
 
   return (
     <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800">
@@ -85,47 +58,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
                   Civic Action Network
                 </span>
               </div>
-            </div>
-          </div>
-
-          {/* Center section: Role Quick Switcher Pill */}
-          <div className="hidden md:flex items-center relative">
-            <div className="relative">
-              <button
-                onClick={() => setShowRoleSwitcher(!showRoleSwitcher)}
-                className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border ${roleBadgeStyle} cursor-pointer hover:opacity-90 transition-opacity`}
-              >
-                <RoleIconComponent className="w-3.5 h-3.5 mr-1.5" />
-                <span className="capitalize">{currentRole} View</span>
-                <ChevronDown className="w-3.5 h-3.5 ml-1.5 opacity-70" />
-              </button>
-
-              {showRoleSwitcher && (
-                <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 py-2 z-50 animate-in fade-in slide-in-from-top-2">
-                  <div className="px-3 py-1 text-[10px] font-bold uppercase text-slate-400 tracking-wider">
-                    Switch Active Portal
-                  </div>
-                  {(['citizen', 'entrepreneur', 'admin'] as Role[]).map((role) => (
-                    <button
-                      key={role}
-                      onClick={() => {
-                        switchRole(role);
-                        setShowRoleSwitcher(false);
-                      }}
-                      className={`w-full flex items-center px-3 py-2 text-xs font-medium text-left transition-colors ${
-                        currentRole === role
-                          ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-bold'
-                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      <span className="capitalize">{role} Portal</span>
-                      {currentRole === role && (
-                        <CheckCircle className="w-3.5 h-3.5 ml-auto text-blue-600" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
 

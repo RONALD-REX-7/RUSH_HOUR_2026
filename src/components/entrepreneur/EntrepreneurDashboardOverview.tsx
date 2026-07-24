@@ -12,10 +12,14 @@ import {
   DollarSign,
   MapPin,
   Building,
+  Star,
+  Award,
+  History,
+  FileText,
 } from 'lucide-react';
 
 export const EntrepreneurDashboardOverview: React.FC = () => {
-  const { problems, currentUser, setActiveTab, setSelectedProblemForChat } = useApp();
+  const { problems, currentUser, setActiveTab, setSelectedProblemForChat, entrepreneurPerformances } = useApp();
 
   const availableProblems = problems.filter((p) => p.status === 'Pending');
   const myAccepted = problems.filter(
@@ -54,7 +58,7 @@ export const EntrepreneurDashboardOverview: React.FC = () => {
       </div>
 
       {/* Dashboard Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <StatCard
           title="Available Problems"
           value={availableProblems.length}
@@ -75,13 +79,6 @@ export const EntrepreneurDashboardOverview: React.FC = () => {
           icon={Briefcase}
           color="purple"
           description="Active repair crews"
-        />
-        <StatCard
-          title="Solved Problems"
-          value={mySolved.length}
-          icon={CheckCircle2}
-          color="green"
-          description="Completed & verified"
         />
       </div>
 
@@ -167,6 +164,64 @@ export const EntrepreneurDashboardOverview: React.FC = () => {
             ))}
           </div>
         )}
+      </div>
+
+      {/* Registered Entrepreneurs Directory - Clean Name List */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-4">
+          <div>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center">
+              <Award className="w-5 h-5 text-emerald-600 mr-2" />
+              Registered Entrepreneurs Directory
+            </h3>
+            <p className="text-xs text-slate-500">
+              Active verified entrepreneurs and municipal contractors list
+            </p>
+          </div>
+          <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 w-fit">
+            {entrepreneurPerformances.length} Active Entrepreneurs
+          </span>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 text-slate-500 uppercase font-bold text-[10px]">
+              <tr>
+                <th className="py-3 px-4">Entrepreneur Name</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              {entrepreneurPerformances.map((ent) => {
+                const isMe = ent.name.toLowerCase().includes(currentUser?.name.toLowerCase().split(' ')[0] || '');
+                return (
+                  <tr
+                    key={ent.id}
+                    className={`transition-colors ${
+                      isMe
+                        ? 'bg-emerald-50/70 dark:bg-emerald-950/30 border-l-4 border-l-emerald-500'
+                        : 'hover:bg-slate-50/80 dark:hover:bg-slate-800/40'
+                    }`}
+                  >
+                    <td className="py-3.5 px-4">
+                      <div className="flex items-center space-x-3">
+                        <img
+                          src={ent.avatar}
+                          alt={ent.name}
+                          className="w-9 h-9 rounded-full object-cover ring-2 ring-emerald-500/30 shrink-0"
+                        />
+                        <div>
+                          <span className="font-bold text-slate-900 dark:text-white block text-sm">
+                            {ent.name} {isMe ? ' (You)' : ''}
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
