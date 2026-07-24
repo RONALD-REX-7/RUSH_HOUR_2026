@@ -40,9 +40,7 @@ def classify_image(image_path):
         target_size=(224,224)
 
     )
-
-    img = image.img_to_array(img)
-
+    img = image.img_to_array(img
     img = np.expand_dims(
 
         img,
