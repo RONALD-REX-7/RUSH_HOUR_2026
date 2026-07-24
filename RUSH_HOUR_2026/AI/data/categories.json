@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "Healthcare", "description": "Medical facilities, pharmacies, hospitals, clinics", "keywords": ["pharmacy", "hospital", "clinic", "doctor", "medical", "health", "medicine", "nurse", "emergency", "treatment"] },
+  { "id": 2, "name": "Grocery & Retail", "description": "Supermarkets, grocery stores, essential retail", "keywords": ["grocery", "supermarket", "shop", "store", "market", "retail", "vegetables", "fruits", "essential", "supplies"] },
+  { "id": 3, "name": "EV & Transport", "description": "Electric vehicle charging, public transport, roads", "keywords": ["ev", "charging", "station", "bus", "transport", "train", "road", "transit", "traffic", "commute"] },
+  { "id": 4, "name": "Repair & Maintenance", "description": "Mechanics, home repair, plumbing, electrical", "keywords": ["repair", "maintenance", "mechanic", "plumber", "electrician", "fix", "broken", "leak", "service", "garage"] },
+  { "id": 5, "name": "Education", "description": "Schools, tutoring, libraries, educational facilities", "keywords": ["school", "education", "teacher", "library", "tutor", "college", "student", "learning", "study", "books"] },
+  { "id": 6, "name": "Financial Services", "description": "Banks, ATMs, financial advising, insurance", "keywords": ["bank", "atm", "cash", "finance", "money", "loan", "insurance", "deposit", "withdrawal", "branch"] },
+  { "id": 7, "name": "Food & Restaurants", "description": "Restaurants, cafes, fast food, dining", "keywords": ["food", "restaurant", "cafe", "dining", "eat", "meal", "coffee", "bakery", "dinner", "lunch"] },
+  { "id": 8, "name": "Utilities", "description": "Water, electricity, internet, waste management", "keywords": ["water", "electricity", "power", "internet", "wifi", "waste", "garbage", "trash", "outage", "utility"] },
+  { "id": 9, "name": "Recreation", "description": "Parks, gyms, entertainment, community centers", "keywords": ["park", "gym", "recreation", "entertainment", "center", "sports", "fitness", "playground", "pool", "movie"] },
+  { "id": 10, "name": "Other", "description": "Miscellaneous issues not covered elsewhere", "keywords": ["other", "miscellaneous", "general", "issue", "problem", "need", "request", "help", "support", "community"] }
+]
