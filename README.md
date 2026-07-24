@@ -123,7 +123,7 @@ The major objectives of ProblemChain are:
 | 3 | Dharani | Frontend Developer |
 | 4 | Sabarish | Research Analyst & Scalability Planner |
 | 5 | Ronald | QA Engineer & Software Tester |
-| 6 | Aaseef | Documentation & Presentation Lead |
+| 6 | Mohamed Aaseef | Documentation & Presentation Lead |
 
 ---
 
