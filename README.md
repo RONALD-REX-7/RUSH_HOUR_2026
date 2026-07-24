@@ -1604,3 +1604,496 @@ tests/
 ---
 
 > **The modular folder structure of ProblemChain promotes clean architecture, efficient collaboration, scalability, and maintainability, making the project suitable for both hackathon development and future production deployment.**
+# ⚙️ Installation & Usage Guide
+
+This section explains how to install, configure, and run the **ProblemChain** platform on a local development environment. Follow the steps below to set up the frontend, backend, AI engine, and database successfully.
+
+---
+
+# 📋 System Requirements
+
+Before installing the project, ensure your system meets the following requirements.
+
+## 💻 Hardware Requirements
+
+| Component | Minimum Requirement |
+|------------|---------------------|
+| Processor | Intel Core i3 / AMD Ryzen 3 or higher |
+| RAM | 8 GB |
+| Storage | 10 GB Free Disk Space |
+| Internet | Stable Internet Connection |
+
+---
+
+## 🖥️ Software Requirements
+
+| Software | Version |
+|----------|---------|
+| Operating System | Windows 10/11, Linux, or macOS |
+| Node.js | v18 or above |
+| Python | v3.10 or above |
+| MongoDB | MongoDB Atlas or Local MongoDB |
+| Git | Latest Version |
+| Visual Studio Code | Recommended |
+| Postman | Optional (API Testing) |
+
+---
+
+# 📥 Clone the Repository
+
+Clone the repository from GitHub.
+
+```bash
+git clone https://github.com/yourusername/ProblemChain.git
+
+cd ProblemChain
+```
+
+---
+
+# 📦 Install Frontend Dependencies
+
+Navigate to the frontend directory.
+
+```bash
+cd frontend
+```
+
+Install all required packages.
+
+```bash
+npm install
+```
+
+This installs:
+
+- React.js
+- Vite
+- Tailwind CSS
+- Axios
+- React Router
+- Leaflet.js
+- Other project dependencies
+
+---
+
+# ⚙️ Install Backend Dependencies
+
+Open another terminal.
+
+```bash
+cd backend
+```
+
+Install backend packages.
+
+```bash
+npm install
+```
+
+This installs:
+
+- Express.js
+- Mongoose
+- JWT
+- bcrypt
+- Multer
+- Cloudinary SDK
+- dotenv
+- Other required libraries
+
+---
+
+# 🤖 Install AI Module Dependencies
+
+Navigate to the AI Engine folder.
+
+```bash
+cd ai-engine
+```
+
+Install Python dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+
+The AI module installs:
+
+- Scikit-learn
+- Pandas
+- NumPy
+- Joblib
+- Flask / FastAPI (if applicable)
+
+---
+
+# 🔐 Configure Environment Variables
+
+Create a **`.env`** file inside the **backend** folder.
+
+Example configuration:
+
+```env
+PORT=5000
+
+MONGODB_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_secret_key
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+
+CLOUDINARY_API_KEY=your_api_key
+
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+> **Note:** Never commit the `.env` file to the GitHub repository.
+
+---
+
+# 🗄️ Configure MongoDB
+
+### Option 1 – MongoDB Atlas (Recommended)
+
+1. Create a MongoDB Atlas account.
+2. Create a new cluster.
+3. Copy the connection string.
+4. Paste it into the `MONGODB_URI` field in the `.env` file.
+
+### Option 2 – Local MongoDB
+
+Install MongoDB locally and start the MongoDB service before running the backend.
+
+---
+
+# ▶️ Run the Backend Server
+
+Navigate to the backend folder.
+
+```bash
+cd backend
+```
+
+Start the backend server.
+
+```bash
+npm start
+```
+
+or
+
+```bash
+npm run dev
+```
+
+The backend server will run at:
+
+```text
+http://localhost:5000
+```
+
+---
+
+# 🌐 Run the Frontend
+
+Navigate to the frontend folder.
+
+```bash
+cd frontend
+```
+
+Run the development server.
+
+```bash
+npm run dev
+```
+
+The frontend application will be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+# 🧠 Run the AI Engine
+
+Navigate to the AI Engine.
+
+```bash
+cd ai-engine
+```
+
+Start the AI service.
+
+```bash
+python app.py
+```
+
+The AI Engine will start and wait for requests from the backend.
+
+---
+
+# 🚀 Launch the Application
+
+Open your preferred web browser.
+
+Visit:
+
+```text
+http://localhost:5173
+```
+
+The **ProblemChain** homepage will load successfully.
+
+---
+
+# 📖 Usage Guide
+
+The following steps describe the complete workflow for using the ProblemChain platform.
+
+---
+
+## Step 1 – Register
+
+Create an account based on your role.
+
+Supported Roles:
+
+- 👨‍👩‍👧 Citizen
+- 💼 Entrepreneur
+- 🛡️ Administrator
+
+---
+
+## Step 2 – Login
+
+Enter your registered email address and password to securely access the platform.
+
+JWT Authentication is used for secure session management.
+
+---
+
+## Step 3 – Report a Community Problem
+
+Citizens can submit community problems by providing:
+
+- 📍 Location
+- 🏷️ Category
+- 📝 Description
+- 📷 Images
+- 📄 Supporting Evidence
+
+The report is stored with a **Pending Verification** status.
+
+---
+
+## Step 4 – AI Analysis
+
+Once submitted, the AI Engine automatically:
+
+- Categorizes the problem
+- Detects duplicate reports
+- Estimates community demand
+
+This improves report accuracy and reduces manual effort.
+
+---
+
+## Step 5 – Admin Verification
+
+Administrators verify the report by reviewing:
+
+- Authenticity
+- Supporting evidence
+- Location
+- Duplicate status
+
+Approved reports proceed to the next stage.
+
+Rejected reports are closed.
+
+---
+
+## Step 6 – Startup Opportunity Creation
+
+Verified community problems are transformed into startup opportunities.
+
+Each opportunity includes:
+
+- Location
+- Category
+- Demand Level
+- Community Information
+- Supporting Images
+
+---
+
+## Step 7 – Opportunity Discovery
+
+Entrepreneurs browse opportunities using:
+
+- Interactive Maps
+- Demand Heatmaps
+- Smart Filters
+- Analytics Dashboard
+
+They can identify high-demand business opportunities based on verified community needs.
+
+---
+
+## Step 8 – Join the Queue
+
+Entrepreneurs interested in an opportunity can join its allocation queue.
+
+Queue Rules:
+
+- Maximum **6 entrepreneurs**
+- First-Come, First-Served (FCFS)
+- Automatic queue progression
+
+---
+
+## Step 9 – Opportunity Allocation
+
+The first entrepreneur receives exclusive access.
+
+If the entrepreneur:
+
+- Accepts → Opportunity is locked.
+- Declines → Opportunity moves to the next entrepreneur.
+- Does not respond → Automatic queue transfer.
+
+---
+
+## Step 10 – Project Implementation
+
+The selected entrepreneur begins implementing the startup solution.
+
+Examples include:
+
+- Pharmacy
+- Grocery Store
+- EV Charging Station
+- Repair Centre
+- Educational Service
+
+Project milestones are created for monitoring progress.
+
+---
+
+## Step 11 – Progress Tracking
+
+The platform continuously tracks project implementation.
+
+Tracked information includes:
+
+- Milestones
+- Project Status
+- Completion Percentage
+- Timeline Updates
+
+Real-time notifications are sent to:
+
+- Citizens
+- Entrepreneurs
+- Administrators
+
+---
+
+# 🧪 Testing
+
+## Backend API Testing
+
+REST APIs can be tested using **Postman**.
+
+Example APIs:
+
+- User Registration API
+- Login API
+- Problem Submission API
+- Opportunity Management API
+- Queue Allocation API
+- Notification API
+
+---
+
+## Frontend Testing
+
+Run:
+
+```bash
+npm test
+```
+
+---
+
+## Backend Testing
+
+Run:
+
+```bash
+npm test
+```
+
+Testing includes:
+
+- Unit Testing
+- API Testing
+- Integration Testing
+- Functional Testing
+
+---
+
+# ☁️ Deployment
+
+ProblemChain can be deployed using the following cloud platforms.
+
+| Component | Platform |
+|-----------|----------|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | MongoDB Atlas |
+| Image Storage | Cloudinary |
+
+---
+
+# 📌 Installation Workflow
+
+```text
+Clone Repository
+        │
+        ▼
+Install Frontend Dependencies
+        │
+        ▼
+Install Backend Dependencies
+        │
+        ▼
+Install AI Dependencies
+        │
+        ▼
+Configure .env File
+        │
+        ▼
+Configure MongoDB
+        │
+        ▼
+Start Backend
+        │
+        ▼
+Start AI Engine
+        │
+        ▼
+Start Frontend
+        │
+        ▼
+Launch ProblemChain
+```
+
+---
+
+# ✅ Installation Complete
+
+After completing the above steps, the **ProblemChain** platform will be successfully configured and ready for development, testing, and deployment. The system enables citizens to report verified community problems, allows AI to analyze and classify reports, and helps entrepreneurs discover sustainable startup opportunities through a secure, scalable, and intelligent workflow.
