@@ -421,3 +421,294 @@ Key Benefits:
 
 ---
 ```
+# 🛠️ Complete Technology Stack
+
+ProblemChain is built using a modern full-stack architecture that integrates web technologies, Artificial Intelligence, cloud services, and geospatial visualization to provide a scalable, secure, and intelligent platform for transforming verified community problems into startup opportunities.
+
+---
+
+## 📚 Technology Stack Overview
+
+| Category | Technology | Purpose |
+|----------|------------|---------|
+| **Frontend** | React.js, Vite, HTML5, CSS3, JavaScript | Builds a responsive, component-based, and interactive user interface. React.js enables reusable UI components, while Vite provides fast development and optimized production builds. |
+| **UI Framework** | Tailwind CSS | Used to create a modern, responsive, and mobile-friendly interface using utility-first CSS classes. |
+| **Maps & Location Services** | Leaflet.js, OpenStreetMap | Displays reported community problems on interactive maps and visualizes demand using geographical heatmaps for entrepreneurs and administrators. |
+| **Backend** | Node.js, Express.js | Provides the server-side runtime environment, builds RESTful APIs, handles business logic, authentication, and communication with the database and AI engine. |
+| **Database** | MongoDB, Mongoose | Stores user accounts, problem reports, startup opportunities, queue information, notifications, analytics, and project progress. Mongoose simplifies schema creation and database operations. |
+| **Artificial Intelligence / Machine Learning** | Python, Scikit-learn, Pandas, NumPy | Performs automatic problem categorization, duplicate report detection, community demand estimation, and data analysis using machine learning models. |
+| **Authentication & Security** | JWT (JSON Web Token), bcrypt | JWT provides secure authentication and session management, while bcrypt encrypts user passwords before storing them in the database. |
+| **Image Storage** | Cloudinary | Securely stores uploaded community images and delivers optimized images with cloud-based storage. |
+| **Version Control** | Git, GitHub | Tracks project development, manages branches, supports collaborative development, and maintains version history. |
+| **API Testing** | Postman | Tests REST APIs, validates request/response formats, and ensures proper backend functionality. |
+| **Testing Framework** | Jest, Supertest | Jest performs unit testing, while Supertest validates REST APIs and backend integration testing. |
+| **Deployment** | Vercel, Render, MongoDB Atlas | Vercel hosts the frontend application, Render deploys backend services, and MongoDB Atlas provides a cloud-hosted NoSQL database. |
+| **Documentation** | Markdown, Google Docs, Canva, Microsoft PowerPoint | Used to prepare project documentation, user guides, technical reports, presentations, and demonstration materials. |
+| **Project Management** | GitHub Projects, GitHub Issues | Supports task management, bug tracking, issue reporting, milestone planning, and collaborative project development. |
+
+---
+
+# 🏗️ Technology Architecture
+
+```text
+                    Frontend
+        React.js + Vite + Tailwind CSS
+                     │
+                     │ REST API
+                     ▼
+          Backend (Node.js + Express.js)
+                     │
+     ┌───────────────┼─────────────────┐
+     │               │                 │
+     ▼               ▼                 ▼
+ MongoDB         AI Engine        Cloudinary
+ (Mongoose)       (Python)       Image Storage
+     │               │
+     └───────┬───────┘
+             ▼
+     Business Logic & Analytics
+             │
+             ▼
+        User Dashboard
+```
+
+---
+
+# 💻 Frontend Technologies
+
+The frontend is responsible for providing an intuitive and responsive user experience for citizens, entrepreneurs, administrators, and government authorities.
+
+### Technologies Used
+
+- React.js
+- Vite
+- HTML5
+- CSS3
+- JavaScript
+- Tailwind CSS
+
+### Responsibilities
+
+- User Registration & Login
+- Community Problem Reporting
+- Interactive Maps
+- Analytics Dashboard
+- Opportunity Management
+- Queue Visualization
+- Progress Tracking
+- Notifications
+- Responsive User Interface
+
+---
+
+# ⚙️ Backend Technologies
+
+The backend manages application logic, authentication, database communication, AI integration, and REST APIs.
+
+### Technologies Used
+
+- Node.js
+- Express.js
+
+### Responsibilities
+
+- REST API Development
+- Authentication
+- Business Logic
+- Queue Management
+- Notification Handling
+- AI Integration
+- Database Operations
+- Image Upload Processing
+
+---
+
+# 🗄️ Database Technologies
+
+MongoDB is used as the primary NoSQL database.
+
+### Technologies Used
+
+- MongoDB
+- Mongoose ODM
+
+### Data Stored
+
+- Users
+- Community Reports
+- Startup Opportunities
+- Queue Details
+- Notifications
+- Analytics
+- Project Milestones
+
+---
+
+# 🤖 Artificial Intelligence Stack
+
+Artificial Intelligence is the core component that transforms community reports into meaningful startup opportunities.
+
+### Technologies Used
+
+- Python
+- Scikit-learn
+- Pandas
+- NumPy
+
+### AI Functions
+
+- Automatic Problem Categorization
+- Duplicate Report Detection
+- Community Demand Estimation
+- Data Analysis
+- Business Opportunity Generation Support
+
+---
+
+# 🔐 Authentication & Security
+
+Security is implemented using modern authentication standards.
+
+### Technologies
+
+- JWT (JSON Web Token)
+- bcrypt
+
+### Security Features
+
+- Secure Login
+- Password Hashing
+- Protected APIs
+- Role-Based Authentication
+- Session Management
+
+---
+
+# 🗺️ Maps & Location Services
+
+ProblemChain integrates geospatial technologies to visualize community problems and business opportunities.
+
+### Technologies
+
+- Leaflet.js
+- OpenStreetMap
+
+### Features
+
+- Interactive Maps
+- Problem Location Visualization
+- Demand Heatmaps
+- Startup Opportunity Mapping
+- Location-Based Analytics
+
+---
+
+# ☁️ Cloud Services
+
+### Cloudinary
+
+Used for:
+
+- Secure Image Upload
+- Cloud Image Storage
+- Fast Image Delivery
+- Image Optimization
+
+### MongoDB Atlas
+
+Provides:
+
+- Cloud Database
+- Automatic Backup
+- High Availability
+- Secure Remote Access
+
+---
+
+# 🧪 Testing Technologies
+
+Testing ensures system reliability and software quality.
+
+### Tools Used
+
+- Postman
+- Jest
+- Supertest
+
+### Testing Coverage
+
+- Unit Testing
+- Integration Testing
+- API Testing
+- Functional Testing
+- Security Testing
+- Performance Testing
+
+---
+
+# 🚀 Deployment Technologies
+
+The application is deployed using modern cloud platforms.
+
+| Component | Deployment Platform |
+|-----------|---------------------|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | MongoDB Atlas |
+| Images | Cloudinary |
+
+---
+
+# 📄 Documentation Tools
+
+The project documentation is prepared using:
+
+- Markdown (README.md)
+- Google Docs
+- Canva
+- Microsoft PowerPoint
+
+These tools are used for preparing technical documentation, project reports, user guides, presentations, and demonstration materials.
+
+---
+
+# 📋 Project Management Tools
+
+To ensure smooth collaboration among team members, the following tools are used:
+
+- Git
+- GitHub
+- GitHub Projects
+- GitHub Issues
+
+These tools help in:
+
+- Version Control
+- Branch Management
+- Task Assignment
+- Issue Tracking
+- Code Reviews
+- Milestone Planning
+- Team Collaboration
+
+---
+
+# 📌 Technology Stack Summary
+
+| Layer | Technologies |
+|--------|--------------|
+| **Frontend** | React.js, Vite, HTML5, CSS3, JavaScript, Tailwind CSS |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB, Mongoose |
+| **AI/ML** | Python, Scikit-learn, Pandas, NumPy |
+| **Authentication** | JWT, bcrypt |
+| **Maps** | Leaflet.js, OpenStreetMap |
+| **Cloud Storage** | Cloudinary |
+| **Testing** | Postman, Jest, Supertest |
+| **Deployment** | Vercel, Render, MongoDB Atlas |
+| **Project Management** | Git, GitHub, GitHub Projects, GitHub Issues |
+| **Documentation** | Markdown, Google Docs, Canva, Microsoft PowerPoint |
+
+---
+
+> **ProblemChain leverages a robust full-stack architecture integrated with Artificial Intelligence, cloud technologies, geospatial visualization, and secure authentication to transform verified community problems into sustainable startup opportunities.**
