@@ -336,8 +336,13 @@ ProblemChain follows a modular and scalable architecture that integrates Artific
 
 ## 📌 System Architecture Diagram
 
-> **Insert your System Architecture Image Here**
+# 🏗️ System Architecture
 
+The following diagram illustrates the overall architecture of **ProblemChain**, showing the interaction between users, frontend, backend, AI/ML engine, database, cloud storage, and external services.
+
+<p align="center">
+  <img src="./Details/System%20Architecture.png" alt="ProblemChain System Architecture" width="1000">
+</p>
 ```text
 Users
 (Citizen | Entrepreneur | Admin)
