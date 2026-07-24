@@ -994,3 +994,331 @@ Project Tracking & Notifications
 <p align="center">
   <img src="docs/images/system-architecture.png" alt="ProblemChain System Architecture" width="100%">
 </p>
+# 🔄 Detailed Workflow
+
+The **ProblemChain** platform follows a structured, AI-driven workflow that transforms verified community problems into sustainable startup opportunities. The workflow ensures transparency, fairness, and collaboration among **Citizens, Entrepreneurs, Administrators, and Government Authorities** throughout the entire lifecycle.
+
+---
+
+# 📌 Workflow Diagram
+
+<p align="center">
+  <img src="docs/images/workflow-diagram.png" alt="ProblemChain Workflow Diagram" width="100%">
+</p>
+
+> **Figure 2:** End-to-End Workflow of the ProblemChain Platform.
+
+---
+
+# 🚀 End-to-End Workflow
+
+```text
+Citizen Registration/Login
+          │
+          ▼
+Submit Community Problem
+(Location, Category, Images, Evidence)
+          │
+          ▼
+AI-Based Analysis
+ ├── Categorization
+ ├── Duplicate Detection
+ └── Demand Estimation
+          │
+          ▼
+Admin Verification
+          │
+     ┌────┴────┐
+     │         │
+ Rejected   Approved
+     │         │
+     ▼         ▼
+  Closed   Startup Opportunity Created
+                    │
+                    ▼
+       Opportunity Published
+                    │
+                    ▼
+Entrepreneurs Explore Opportunities
+(Maps, Heatmaps & Analytics)
+                    │
+                    ▼
+Join Opportunity Queue
+(Maximum 6 Entrepreneurs)
+                    │
+                    ▼
+Queue-Based Allocation
+                    │
+        ┌───────────┴───────────┐
+        │                       │
+ Accepted                 Declined / Timeout
+        │                       │
+        ▼                       ▼
+Opportunity Locked     Next Entrepreneur Selected
+        │
+        ▼
+Project Implementation
+        │
+        ▼
+Milestone Tracking
+        │
+        ▼
+Notifications & Progress Updates
+        │
+        ▼
+Project Completion
+```
+
+---
+
+# 📝 Step-by-Step Workflow
+
+## Step 1 – User Registration & Login
+
+The workflow begins with user registration and authentication.
+
+Three types of users can register on the platform:
+
+- 👨‍👩‍👧 Citizen
+- 💼 Entrepreneur
+- 🛡️ Administrator
+
+Users securely log in using **JWT Authentication**, while passwords are encrypted using **bcrypt** before being stored in the database.
+
+### Outcome
+
+- Secure authentication
+- Role-based dashboard access
+- Protected application resources
+
+---
+
+## Step 2 – Community Problem Submission
+
+Citizens report community problems through an intuitive reporting interface.
+
+Each report contains:
+
+- 📍 Location
+- 🏷️ Category
+- 📝 Description
+- 📷 Images
+- 📄 Supporting Evidence
+
+After submission, the report is stored in the database with a **Pending Verification** status.
+
+### Outcome
+
+- Community problem successfully recorded.
+- Awaiting AI analysis and verification.
+
+---
+
+## Step 3 – AI-Based Problem Analysis
+
+Once a report is submitted, the AI engine automatically analyzes it.
+
+The AI performs:
+
+- 🤖 Automatic Problem Categorization
+- 🔍 Duplicate Report Detection
+- 📈 Community Demand Estimation
+
+This reduces manual effort, improves data quality, and prioritizes genuine community needs.
+
+### Outcome
+
+- AI-generated report insights.
+- Duplicate reports identified.
+- Demand score estimated.
+
+---
+
+## Step 4 – Admin Verification
+
+Administrators or trusted volunteers verify every submitted report.
+
+Verification includes:
+
+- ✔ Authenticity Check
+- ✔ Supporting Evidence Validation
+- ✔ Location Verification
+- ✔ Duplicate Confirmation
+
+### If Rejected
+
+- Report status changes to **Rejected**
+- Citizens receive a notification explaining the decision.
+
+### If Approved
+
+- Report proceeds to startup opportunity creation.
+
+---
+
+## Step 5 – Startup Opportunity Creation
+
+Approved reports are automatically transformed into startup opportunities.
+
+Each opportunity contains:
+
+- 📍 Location
+- 🏷️ Business Category
+- 📈 Demand Level
+- 📷 Images
+- 👥 Community Information
+
+The opportunity is then published for entrepreneurs.
+
+### Outcome
+
+A verified business opportunity becomes available on the platform.
+
+---
+
+## Step 6 – Opportunity Discovery
+
+Entrepreneurs explore startup opportunities through intelligent dashboards.
+
+Available tools include:
+
+- 🗺️ Interactive Maps
+- 🔥 Demand Heatmaps
+- 🎯 Smart Filters
+- 📊 Analytics Dashboard
+
+This enables entrepreneurs to identify areas with genuine business demand before investing.
+
+### Outcome
+
+Entrepreneurs discover high-potential business opportunities.
+
+---
+
+## Step 7 – Queue-Based Opportunity Allocation
+
+Interested entrepreneurs join the opportunity queue.
+
+### Queue Rules
+
+- Maximum **6 entrepreneurs** per opportunity.
+- Queue follows **First Come, First Served (FCFS)**.
+- First entrepreneur receives exclusive access for a limited period.
+
+If the entrepreneur:
+
+- Accepts → Opportunity proceeds.
+- Declines → Queue advances automatically.
+- Fails to respond → Queue advances automatically.
+
+### Outcome
+
+Fair and transparent allocation of startup opportunities.
+
+---
+
+## Step 8 – Opportunity Locking
+
+When an entrepreneur accepts an opportunity:
+
+- Opportunity status changes to **Claimed**
+- Queue is closed
+- Further claims are blocked
+- Remaining entrepreneurs receive notifications
+
+### Outcome
+
+Duplicate claims are prevented.
+
+---
+
+## Step 9 – Project Implementation
+
+The selected entrepreneur begins implementing the startup solution.
+
+Examples include:
+
+- 🏥 Pharmacy
+- 🛒 Grocery Store
+- ⚡ EV Charging Station
+- 🔧 Repair Centre
+- 🎓 Educational Service
+
+Project milestones are created to monitor implementation progress.
+
+### Outcome
+
+Community problem begins transitioning into a real business solution.
+
+---
+
+## Step 10 – Progress Tracking & Notifications
+
+Throughout implementation, the platform continuously monitors project progress.
+
+Tracked information includes:
+
+- 📌 Milestones
+- 📈 Completion Percentage
+- 📅 Timeline Updates
+- 📊 Current Status
+
+Notifications are sent to:
+
+### Citizens
+
+- Verification updates
+- Project progress
+- Completion notifications
+
+### Entrepreneurs
+
+- Queue updates
+- Opportunity allocation
+- Milestone reminders
+
+### Administrators
+
+- Verification requests
+- Opportunity status
+- Project monitoring alerts
+
+### Outcome
+
+A transparent, accountable, and continuously monitored implementation process.
+
+---
+
+# 📊 Workflow Summary
+
+| Stage | Responsible User | Output |
+|--------|------------------|--------|
+| User Registration | Citizen / Entrepreneur / Admin | Secure Account |
+| Problem Submission | Citizen | Community Report |
+| AI Analysis | AI Engine | Categorized & Analyzed Report |
+| Verification | Admin | Verified Report |
+| Opportunity Creation | System | Startup Opportunity |
+| Opportunity Discovery | Entrepreneur | Opportunity Selection |
+| Queue Allocation | System | Fair Entrepreneur Allocation |
+| Opportunity Locking | System | Claimed Opportunity |
+| Implementation | Entrepreneur | Business Development |
+| Progress Tracking | System | Real-Time Project Updates |
+
+---
+
+# 🌟 Workflow Highlights
+
+- 🤖 AI-assisted report analysis
+- ✅ Human verification for authenticity
+- 🚀 Conversion of verified problems into startup opportunities
+- 📍 Interactive map-based opportunity discovery
+- 📊 AI-driven demand estimation
+- 🔄 Queue-based opportunity allocation
+- 🔒 Opportunity locking to prevent duplicate claims
+- 📈 Real-time milestone tracking
+- 🔔 Automated notifications for all stakeholders
+- 🌍 Transparent and community-driven innovation ecosystem
+
+---
+
+> **ProblemChain transforms community challenges into entrepreneurial opportunities through a transparent, AI-powered workflow that ensures verification, fairness, and sustainable community development.**
