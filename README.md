@@ -334,44 +334,17 @@ ProblemChain follows a modular and scalable architecture that integrates Artific
 
 ---
 
-## 📌 System Architecture Diagram
 
+```text
+
+
+---
 # 🏗️ System Architecture
 
 The following diagram illustrates the overall architecture of **ProblemChain**, showing the interaction between users, frontend, backend, AI/ML engine, database, cloud storage, and external services.
 
 <p align="center">
   <img src="./Details/System%20Architecture.png" alt="ProblemChain System Architecture" width="1000">
-</p>
-```text
-Users
-(Citizen | Entrepreneur | Admin)
-                │
-                ▼
-        React.js Frontend
-                │
-         REST API Requests
-                │
-                ▼
-      Node.js + Express Backend
-                │
-     ┌──────────┼──────────┐
-     │          │          │
-     ▼          ▼          ▼
- MongoDB     AI Engine   Cloudinary
- Database     Python     Image Storage
-     │
-     ▼
- Analytics & Notifications
-```
-
----
-## 🏗️ System Architecture
-
-The following diagram illustrates the overall architecture of **ProblemChain**, showing the interaction between the frontend, backend, AI/ML modules, database, cloud services, and users.
-
-<p align="center">
-  <img src="Details/System%20Architecture.png" alt="ProblemChain System Architecture" width="1000">
 </p>
 
 ## 🏛️ Architecture Layers
