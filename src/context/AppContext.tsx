@@ -15,6 +15,7 @@ import {
   mockNotifications,
   mockEntrepreneurPerformances,
 } from '../data/mockData';
+import { api } from '../services/api';
 
 interface AppContextType {
   currentUser: User | null;
@@ -30,6 +31,7 @@ interface AppContextType {
   unreadNotificationCount: number;
   
   // Handlers
+  goBack: () => void;
   login: (role: Role, email?: string) => void;
   logout: () => void;
   switchRole: (role: Role) => void;
@@ -102,8 +104,47 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return (localStorage.getItem('pc_theme') as 'light' | 'dark') || 'light';
   });
 
-  const [activeTab, setActiveTab] = useState<string>('dashboard');
+  const [activeTab, setActiveTabState] = useState<string>('dashboard');
+  const [tabHistory, setTabHistory] = useState<string[]>([]);
   const [selectedProblemForChat, setSelectedProblemForChat] = useState<Problem | null>(null);
+
+  const handleSetActiveTab = (newTab: string) => {
+    if (newTab !== activeTab) {
+      setTabHistory((prev) => [...prev, activeTab]);
+      setActiveTabState(newTab);
+    }
+  };
+
+  const goBack = () => {
+    if (selectedProblemForChat) {
+      setSelectedProblemForChat(null);
+    } else if (tabHistory.length > 0) {
+      const prevTab = tabHistory[tabHistory.length - 1];
+      setTabHistory((prev) => prev.slice(0, prev.length - 1));
+      setActiveTabState(prevTab);
+    } else {
+      setActiveTabState('dashboard');
+    }
+  };
+
+  // Sync REST API data on initial load
+  useEffect(() => {
+    api.fetchProblems().then((apiProblems) => {
+      if (apiProblems && apiProblems.length > 0) {
+        setProblems(apiProblems);
+      }
+    });
+    api.fetchChats().then((apiChats) => {
+      if (apiChats && apiChats.length > 0) {
+        setChats(apiChats);
+      }
+    });
+    api.fetchNotifications().then((apiNotifs) => {
+      if (apiNotifs && apiNotifs.length > 0) {
+        setNotifications(apiNotifs);
+      }
+    });
+  }, []);
 
   // Sync to localStorage
   useEffect(() => {
@@ -152,7 +193,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     setCurrentUser(matchedUser);
     setCurrentRole(role);
-    setActiveTab('dashboard');
+    handleSetActiveTab('dashboard');
   };
 
   const logout = () => {
@@ -458,16 +499,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       value={{
         currentUser,
         currentRole,
-        problems,
-        chats,
-        notifications,
-        entrepreneurs,
+        problems: problems || [],
+        chats: chats || [],
+        notifications: notifications || [],
+        entrepreneurs: entrepreneurs || [],
         entrepreneurPerformances: mockEntrepreneurPerformances,
         themeMode,
         activeTab,
         selectedProblemForChat,
         unreadNotificationCount,
 
+        goBack,
         login,
         logout,
         switchRole,
@@ -483,7 +525,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         markAllNotificationsAsRead,
         updateUserProfile,
         toggleTheme,
-        setActiveTab,
+        setActiveTab: handleSetActiveTab,
         setSelectedProblemForChat,
       }}
     >

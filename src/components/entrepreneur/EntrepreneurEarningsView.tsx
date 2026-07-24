@@ -23,7 +23,7 @@ import {
 export const EntrepreneurEarningsView: React.FC = () => {
   const { currentUser, problems } = useApp();
 
-  const mySolved = problems.filter(
+  const mySolved = (problems || []).filter(
     (p) => p.assignedEntrepreneurId === currentUser?.id && p.status === 'Solved'
   );
 

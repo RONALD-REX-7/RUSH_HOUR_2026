@@ -6,7 +6,7 @@ import { EmptyState } from '../ui/EmptyState';
 export const SolvedProblemsList: React.FC = () => {
   const { problems, currentUser } = useApp();
 
-  const mySolved = problems.filter(
+  const mySolved = (problems || []).filter(
     (p) => p.assignedEntrepreneurId === currentUser?.id && p.status === 'Solved'
   );
 

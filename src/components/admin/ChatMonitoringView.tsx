@@ -9,7 +9,7 @@ export const ChatMonitoringView: React.FC = () => {
   const [search, setSearch] = useState('');
 
   // Active chat channels exist for problems that have assigned entrepreneurs
-  const monitoredProblems = problems.filter((p) => p.assignedEntrepreneurId);
+  const monitoredProblems = (problems || []).filter((p) => p.assignedEntrepreneurId);
 
   const [activeProblem, setActiveProblem] = useState(monitoredProblems[0] || null);
 
@@ -53,7 +53,7 @@ export const ChatMonitoringView: React.FC = () => {
           <div className="space-y-2 max-h-[500px] overflow-y-auto">
             {filteredMonitored.map((p) => {
               const isSelected = activeProblem?.id === p.id;
-              const msgCount = chats.filter((c) => c.problemId === p.id).length;
+              const msgCount = (chats || []).filter((c) => c.problemId === p.id).length;
 
               return (
                 <button

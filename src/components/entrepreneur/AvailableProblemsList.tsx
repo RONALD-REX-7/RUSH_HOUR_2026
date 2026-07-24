@@ -20,7 +20,7 @@ export const AvailableProblemsList: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [detailModalProblem, setDetailModalProblem] = useState<Problem | null>(null);
 
-  const availableProblems = problems.filter((p) => p.status === 'Pending');
+  const availableProblems = (problems || []).filter((p) => p.status === 'Pending');
 
   const filtered = availableProblems.filter((p) => {
     const matchesSearch =

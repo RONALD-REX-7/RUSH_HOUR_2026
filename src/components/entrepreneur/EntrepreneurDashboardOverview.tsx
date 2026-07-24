@@ -21,14 +21,15 @@ import {
 export const EntrepreneurDashboardOverview: React.FC = () => {
   const { problems, currentUser, setActiveTab, setSelectedProblemForChat, entrepreneurPerformances } = useApp();
 
-  const availableProblems = problems.filter((p) => p.status === 'Pending');
-  const myAccepted = problems.filter(
+  const safeProblems = problems || [];
+  const availableProblems = safeProblems.filter((p) => p.status === 'Pending');
+  const myAccepted = safeProblems.filter(
     (p) => p.assignedEntrepreneurId === currentUser?.id && p.status === 'Accepted'
   );
-  const myInProgress = problems.filter(
+  const myInProgress = safeProblems.filter(
     (p) => p.assignedEntrepreneurId === currentUser?.id && p.status === 'In Progress'
   );
-  const mySolved = problems.filter(
+  const mySolved = safeProblems.filter(
     (p) => p.assignedEntrepreneurId === currentUser?.id && p.status === 'Solved'
   );
 

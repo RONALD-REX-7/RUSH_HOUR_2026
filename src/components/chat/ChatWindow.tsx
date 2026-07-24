@@ -27,7 +27,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ problem, isReadOnly = fa
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const problemChats = chats.filter((c) => c.problemId === problem.id);
+  const problemChats = (chats || []).filter((c) => c.problemId === problem.id);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

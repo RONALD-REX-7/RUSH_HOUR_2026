@@ -13,11 +13,13 @@ import {
   Layers,
   HelpCircle,
   UserPlus,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { Modal } from '../ui/Modal';
 
 export const LoginPage: React.FC = () => {
-  const { login, users, problems } = useApp();
+  const { login, users, problems, themeMode, toggleTheme } = useApp();
   const [selectedRole, setSelectedRole] = useState<Role>('citizen');
 
   // Form states
@@ -72,6 +74,27 @@ export const LoginPage: React.FC = () => {
       {/* Background Decorative Gradients */}
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Top Right Theme Toggle */}
+      <div className="absolute top-6 right-6 z-20">
+        <button
+          onClick={toggleTheme}
+          className="p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 shadow-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center space-x-2 cursor-pointer"
+          title={`Switch to ${themeMode === 'light' ? 'Dark' : 'Light'} Mode`}
+        >
+          {themeMode === 'light' ? (
+            <>
+              <Moon className="w-4 h-4 text-slate-700" />
+              <span className="text-xs font-extrabold text-slate-700">Dark</span>
+            </>
+          ) : (
+            <>
+              <Sun className="w-4 h-4 text-amber-400" />
+              <span className="text-xs font-extrabold text-amber-300">Light</span>
+            </>
+          )}
+        </button>
+      </div>
 
       {/* Toast Alert */}
       {toastMessage && (
@@ -169,7 +192,7 @@ export const LoginPage: React.FC = () => {
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   </div>
                   <div className="text-xl font-black text-white">
-                    {users.filter((u) => u.role === 'entrepreneur').length || 14}
+                    {(users || []).filter((u) => u.role === 'entrepreneur').length || 14}
                   </div>
                   <div className="text-[10px] text-slate-300 mt-0.5">Active Contractors</div>
                 </div>
@@ -183,7 +206,7 @@ export const LoginPage: React.FC = () => {
                     <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                   </div>
                   <div className="text-xl font-black text-white">
-                    {problems.length || 152}
+                    {(problems || []).length || 152}
                   </div>
                   <div className="text-[10px] text-slate-300 mt-0.5 font-medium">Logged & Processed</div>
                 </div>

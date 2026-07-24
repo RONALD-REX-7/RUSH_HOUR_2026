@@ -17,7 +17,7 @@ import {
 export const CitizenDashboardOverview: React.FC = () => {
   const { problems, currentUser, setActiveTab, setSelectedProblemForChat } = useApp();
 
-  const myProblems = problems.filter((p) => p.citizenId === currentUser?.id);
+  const myProblems = (problems || []).filter((p) => p.citizenId === currentUser?.id);
 
   const totalSubmitted = myProblems.length;
   const accepted = myProblems.filter((p) => p.status === 'Accepted').length;

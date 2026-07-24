@@ -57,7 +57,7 @@ export const MyProblemsList: React.FC<MyProblemsListProps> = ({ viewMode, status
   // Delete confirm modal state
   const [deleteConfirmProblem, setDeleteConfirmProblem] = useState<Problem | null>(null);
 
-  const myProblems = problems.filter((p) => p.citizenId === currentUser?.id);
+  const myProblems = (problems || []).filter((p) => p.citizenId === currentUser?.id);
 
   // Apply strict viewMode base filter
   const baseViewProblems = myProblems.filter((p) => {

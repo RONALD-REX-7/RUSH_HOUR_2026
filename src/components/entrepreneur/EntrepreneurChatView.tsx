@@ -8,7 +8,7 @@ export const EntrepreneurChatView: React.FC = () => {
   const { problems, currentUser, selectedProblemForChat, setSelectedProblemForChat, setActiveTab } =
     useApp();
 
-  const myActiveChatProblems = problems.filter(
+  const myActiveChatProblems = (problems || []).filter(
     (p) => p.assignedEntrepreneurId === currentUser?.id
   );
 

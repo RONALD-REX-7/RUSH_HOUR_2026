@@ -9,7 +9,7 @@ export const CitizenChatView: React.FC = () => {
     useApp();
 
   // Citizen can chat for problems that have been accepted by an entrepreneur
-  const chatableProblems = problems.filter(
+  const chatableProblems = (problems || []).filter(
     (p) => p.citizenId === currentUser?.id && p.assignedEntrepreneurId
   );
 

@@ -8,6 +8,7 @@ import {
   LogOut,
   Menu,
   Layers,
+  ArrowLeft,
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -24,18 +25,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
     markNotificationAsRead,
     markAllNotificationsAsRead,
     setActiveTab,
+    goBack,
     logout,
   } = useApp();
 
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+  const safeNotifications = notifications || [];
+
   return (
     <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Left section: Hamburger + Brand */}
-          <div className="flex items-center space-x-3">
+          {/* Left section: Back button (top left corner) + Mobile Hamburger + Brand Logo */}
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            {/* Top Left Reverse / Back Button (<-) */}
+            <button
+              onClick={goBack}
+              className="px-3 py-2 rounded-xl text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-all flex items-center space-x-1.5 border border-slate-200/80 dark:border-slate-700 shadow-xs cursor-pointer active:scale-95 group"
+              title="Go Back (<-)"
+            >
+              <ArrowLeft className="w-4 h-4 stroke-[2.5] group-hover:-translate-x-0.5 transition-transform text-blue-600 dark:text-blue-400" />
+              <span className="text-xs font-bold">Back</span>
+            </button>
+
             <button
               onClick={onToggleMobileSidebar}
               className="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 lg:hidden"
@@ -50,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
                 <Layers className="w-5 h-5" />
               </div>
-              <div>
+              <div className="hidden xs:block sm:block">
                 <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white flex items-center">
                   Problem<span className="text-blue-600 dark:text-blue-400">Chain</span>
                 </span>
@@ -63,16 +77,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
 
           {/* Right section: Theme, Notifications, User Menu */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            {/* Dark Mode Toggle */}
+            {/* Dark / Light Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              title="Toggle theme"
+              className="p-2 sm:px-3 sm:py-2 rounded-xl text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-all flex items-center space-x-1.5 border border-slate-200/80 dark:border-slate-700 cursor-pointer active:scale-95"
+              title={`Switch to ${themeMode === 'light' ? 'Dark' : 'Light'} Mode`}
+              aria-label="Toggle theme"
             >
               {themeMode === 'light' ? (
-                <Moon className="w-5 h-5" />
+                <>
+                  <Moon className="w-4 h-4 text-slate-700" />
+                  <span className="text-xs font-bold hidden md:inline text-slate-700">Dark</span>
+                </>
               ) : (
-                <Sun className="w-5 h-5 text-amber-400" />
+                <>
+                  <Sun className="w-4 h-4 text-amber-400" />
+                  <span className="text-xs font-bold hidden md:inline text-amber-300">Light</span>
+                </>
               )}
             </button>
 
@@ -108,12 +129,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
                   </div>
 
                   <div className="max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800">
-                    {notifications.filter((n) => currentUser && n.userId === currentUser.id).length === 0 ? (
+                    {safeNotifications.filter((n) => currentUser && n.userId === currentUser.id).length === 0 ? (
                       <div className="p-6 text-center text-xs text-slate-400">
                         No notifications yet
                       </div>
                     ) : (
-                      notifications
+                      safeNotifications
                         .filter((n) => currentUser && n.userId === currentUser.id)
                         .slice(0, 5)
                         .map((n) => (

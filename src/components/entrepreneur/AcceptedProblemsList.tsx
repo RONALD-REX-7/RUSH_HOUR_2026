@@ -31,7 +31,7 @@ export const AcceptedProblemsList: React.FC<AcceptedProblemsListProps> = ({ view
   const [completionNotes, setCompletionNotes] = useState('');
 
   // Strict view mode filter
-  const myFiltered = problems.filter((p) => {
+  const myFiltered = (problems || []).filter((p) => {
     if (p.assignedEntrepreneurId !== currentUser?.id) return false;
     if (viewMode === 'accepted_problems') {
       return p.status === 'Accepted';

@@ -14,7 +14,7 @@ export const NotificationsPage: React.FC = () => {
 
   const [filterType, setFilterType] = useState<string>('All');
 
-  const myNotifs = notifications.filter((n) => currentUser && n.userId === currentUser.id);
+  const myNotifs = (notifications || []).filter((n) => currentUser && n.userId === currentUser.id);
 
   const filtered = myNotifs.filter((n) => {
     if (filterType === 'All') return true;

@@ -40,10 +40,13 @@ import {
 export const AnalyticsDashboard: React.FC = () => {
   const { problems, entrepreneurs, entrepreneurPerformances } = useApp();
 
-  const totalProblems = problems.length || 152;
-  const solvedProblems = problems.filter((p) => p.status === 'Solved').length || 134;
-  const pendingProblems = problems.filter((p) => p.status === 'Pending').length || 18;
-  const activeEntrepreneurs = entrepreneurs.length || 14;
+  const safeProblems = problems || [];
+  const safeEntrepreneurs = entrepreneurs || [];
+
+  const totalProblems = safeProblems.length || 152;
+  const solvedProblems = safeProblems.filter((p) => p.status === 'Solved').length || 134;
+  const pendingProblems = safeProblems.filter((p) => p.status === 'Pending').length || 18;
+  const activeEntrepreneurs = safeEntrepreneurs.length || 14;
   const activeCitizens = 148;
   const avgResolutionTime = '18.4 hrs';
   const successRate = '94.2%';
