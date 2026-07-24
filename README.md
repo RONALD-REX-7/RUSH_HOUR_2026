@@ -1322,3 +1322,285 @@ A transparent, accountable, and continuously monitored implementation process.
 ---
 
 > **ProblemChain transforms community challenges into entrepreneurial opportunities through a transparent, AI-powered workflow that ensures verification, fairness, and sustainable community development.**
+# 📁 Project Folder Structure
+
+The **ProblemChain** project follows a modular and scalable folder structure to ensure maintainability, separation of concerns, and efficient collaboration among team members. The project is divided into multiple layers, including the **Frontend**, **Backend**, **AI Engine**, **Documentation**, and **Testing** modules.
+
+---
+
+# 📂 Overall Project Structure
+
+```text
+ProblemChain/
+│
+├── frontend/          # React.js Frontend Application
+├── backend/           # Node.js & Express Backend APIs
+├── ai-engine/         # AI/ML Models and Processing
+├── docs/              # Project Documentation
+├── tests/             # Testing Modules
+│
+├── .env               # Environment Variables
+├── .gitignore         # Git Ignore Rules
+├── docker-compose.yml # Docker Configuration
+├── LICENSE            # Project License
+└── README.md          # Project Documentation
+```
+
+---
+
+# 🎨 Frontend Structure
+
+The frontend is developed using **React.js**, **Vite**, and **Tailwind CSS**. It manages the user interface, routing, authentication, maps, dashboards, and user interactions.
+
+```text
+frontend/
+│
+├── public/
+│   ├── favicon.ico
+│   ├── logo.png
+│   └── index.html
+│
+├── src/
+│   │
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── icons/
+│   │   └── styles/
+│   │
+│   ├── components/
+│   │   ├── Navbar/
+│   │   ├── Footer/
+│   │   ├── Sidebar/
+│   │   ├── Map/
+│   │   ├── Charts/
+│   │   ├── Notification/
+│   │   └── QueueCard/
+│   │
+│   ├── pages/
+│   │   ├── Home/
+│   │   ├── Login/
+│   │   ├── Register/
+│   │   ├── Citizen/
+│   │   ├── Entrepreneur/
+│   │   ├── Admin/
+│   │   ├── Opportunities/
+│   │   ├── Reports/
+│   │   └── Analytics/
+│   │
+│   ├── services/
+│   │   ├── api.js
+│   │   ├── authService.js
+│   │   ├── reportService.js
+│   │   └── opportunityService.js
+│   │
+│   ├── context/
+│   ├── hooks/
+│   ├── routes/
+│   ├── utils/
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── package.json
+└── vite.config.js
+```
+
+### Frontend Responsibilities
+
+- User Interface
+- Authentication Pages
+- Community Problem Reporting
+- Startup Opportunity Dashboard
+- Interactive Maps
+- Analytics Dashboard
+- Queue Visualization
+- Notifications
+- Responsive Design
+
+---
+
+# ⚙️ Backend Structure
+
+The backend is developed using **Node.js** and **Express.js**. It provides REST APIs, authentication, business logic, AI integration, queue management, and notification services.
+
+```text
+backend/
+│
+├── config/
+│   ├── database.js
+│   ├── cloudinary.js
+│   └── jwt.js
+│
+├── controllers/
+│   ├── authController.js
+│   ├── userController.js
+│   ├── reportController.js
+│   ├── opportunityController.js
+│   ├── queueController.js
+│   └── notificationController.js
+│
+├── middleware/
+│   ├── authMiddleware.js
+│   ├── uploadMiddleware.js
+│   └── errorMiddleware.js
+│
+├── models/
+│   ├── User.js
+│   ├── Report.js
+│   ├── Opportunity.js
+│   ├── Queue.js
+│   └── Notification.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── reportRoutes.js
+│   ├── opportunityRoutes.js
+│   ├── queueRoutes.js
+│   └── userRoutes.js
+│
+├── services/
+│   ├── aiService.js
+│   ├── queueService.js
+│   ├── notificationService.js
+│   └── emailService.js
+│
+├── uploads/
+├── utils/
+├── server.js
+├── app.js
+└── package.json
+```
+
+### Backend Responsibilities
+
+- Authentication
+- REST APIs
+- Business Logic
+- Queue Management
+- Notification Service
+- AI Integration
+- Database Operations
+- Cloudinary Integration
+
+---
+
+# 🤖 AI Engine Structure
+
+The AI Engine processes community reports and generates intelligent insights for startup opportunity creation.
+
+```text
+ai-engine/
+│
+├── models/
+│   ├── classifier.pkl
+│   └── duplicate_detector.pkl
+│
+├── dataset/
+│
+├── scripts/
+│   ├── train_model.py
+│   ├── predict_category.py
+│   ├── duplicate_detection.py
+│   └── demand_estimation.py
+│
+├── requirements.txt
+└── app.py
+```
+
+### AI Module Responsibilities
+
+- Automatic Problem Categorization
+- Duplicate Detection
+- Demand Estimation
+- Machine Learning Model Training
+- Prediction APIs
+
+---
+
+# 📄 Documentation Structure
+
+The **docs** directory contains all project-related documentation.
+
+```text
+docs/
+│
+├── SRS.pdf
+├── PPT.pptx
+├── UserGuide.pdf
+├── API_Documentation.pdf
+└── README.md
+```
+
+### Documentation Includes
+
+- Software Requirements Specification
+- User Guide
+- API Documentation
+- Project Presentation
+- Technical Documentation
+
+---
+
+# 🧪 Testing Structure
+
+The project includes separate folders for testing frontend, backend, and APIs.
+
+```text
+tests/
+│
+├── backend/
+├── frontend/
+└── api/
+```
+
+### Testing Coverage
+
+- Unit Testing
+- API Testing
+- Integration Testing
+- UI Testing
+
+---
+
+# ⚙️ Root-Level Files
+
+| File | Purpose |
+|------|---------|
+| `.env` | Stores environment variables such as database connection strings, JWT secrets, and Cloudinary credentials. |
+| `.gitignore` | Specifies files and folders excluded from Git version control. |
+| `docker-compose.yml` | Defines containerized services for local development and deployment. |
+| `LICENSE` | Contains the project's open-source license information. |
+| `README.md` | Provides complete project documentation, setup instructions, workflows, and technical details. |
+
+---
+
+# 📊 Folder Structure Summary
+
+| Directory | Description |
+|-----------|-------------|
+| **frontend/** | React.js web application and user interface |
+| **backend/** | Express.js REST APIs and business logic |
+| **ai-engine/** | Machine Learning models and AI processing |
+| **docs/** | Project documentation and reports |
+| **tests/** | Unit, integration, and API testing |
+| **uploads/** | Temporary uploaded files (if used locally) |
+| **models/** | Database schemas and AI models |
+| **controllers/** | Backend request handlers |
+| **routes/** | API endpoint definitions |
+| **services/** | Business services and AI integration |
+| **middleware/** | Authentication, uploads, and error handling |
+
+---
+
+# 🚀 Advantages of the Folder Structure
+
+- 📂 Clear separation of frontend, backend, and AI modules.
+- 🔄 Modular architecture for easy maintenance and scalability.
+- 👨‍💻 Enables parallel development among team members.
+- 🧪 Organized testing for frontend, backend, and APIs.
+- 📚 Dedicated documentation directory for technical resources.
+- ⚡ Simplifies deployment and future feature integration.
+- 🔒 Improves code organization and long-term maintainability.
+
+---
+
+> **The modular folder structure of ProblemChain promotes clean architecture, efficient collaboration, scalability, and maintainability, making the project suitable for both hackathon development and future production deployment.**
