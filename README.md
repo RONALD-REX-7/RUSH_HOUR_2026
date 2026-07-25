@@ -1316,6 +1316,12 @@ Global Community Platform
   <img src="Details/entrepreneur_dashboard.jpeg" alt="ProblemChain Entrepreneur Dashboard" width="100%">
 </p>
 
+## 🛡️ Admin Dashboard
+
+<p align="center">
+  <img src="Details/admin_dashboard.jpeg" alt="ProblemChain Admin Dashboard" width="100%">
+</p>
+
 
 # 🎯 Conclusion
 
