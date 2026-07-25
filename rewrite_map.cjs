@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+const fs = require('fs');
+
+const code = `import React, { useState } from 'react';
 import { Problem } from '../../types';
 import { 
   ZoomIn, 
@@ -55,7 +57,7 @@ const getCountryData = (countryName: string, id: string) => {
     activeOrganisations: (hash % 10) + 1,
     resolutionRate: Math.round((resolved / totalIssues) * 100) + '%',
     lastUpdated: new Date(Date.now() - (hash % 100000) * 1000).toLocaleDateString(),
-    flag: `https://flagcdn.com/24x18/${id.toLowerCase()}.png`
+    flag: \`https://flagcdn.com/24x18/\${id.toLowerCase()}.png\`
   };
 };
 
@@ -160,7 +162,7 @@ export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProb
                           stroke: "#ffffff",
                           strokeWidth: 1,
                           outline: "none",
-                          filter: `drop-shadow(0 0 4px ${data.color})`
+                          filter: \`drop-shadow(0 0 4px \${data.color})\`
                         },
                         pressed: {
                           fill: data.color,
@@ -216,7 +218,7 @@ export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProb
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between items-center text-slate-300">
                 <span className="flex items-center text-slate-400"><AlertCircle className="w-3 h-3 mr-1.5" /> Severity</span>
-                <span className={`font-semibold ${hoveredCountry.severity === 'High' ? 'text-red-400' : hoveredCountry.severity === 'Medium' ? 'text-yellow-400' : 'text-emerald-400'}`}>
+                <span className={\`font-semibold \${hoveredCountry.severity === 'High' ? 'text-red-400' : hoveredCountry.severity === 'Medium' ? 'text-yellow-400' : 'text-emerald-400'}\`}>
                   {hoveredCountry.severity}
                 </span>
               </div>
@@ -253,11 +255,11 @@ export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProb
                 </div>
                 <div className="flex items-center space-x-2 text-xs">
                   <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">{selectedCountry.region}</span>
-                  <span className={`px-2 py-0.5 rounded-full border font-medium ${
+                  <span className={\`px-2 py-0.5 rounded-full border font-medium \${
                     selectedCountry.severity === 'High' ? 'bg-red-500/20 text-red-400 border-red-500/30' : 
                     selectedCountry.severity === 'Medium' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' : 
                     'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
-                  }`}>
+                  }\`}>
                     {selectedCountry.densityClass}
                   </span>
                 </div>
@@ -321,3 +323,7 @@ export const LocationMap: React.FC<LocationMapProps> = ({ problems, onSelectProb
     </div>
   );
 };
+`;
+
+fs.writeFileSync('src/components/ui/LocationMap.tsx', code);
+console.log('LocationMap overwritten!');

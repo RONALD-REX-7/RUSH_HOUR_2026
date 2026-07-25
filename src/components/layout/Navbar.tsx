@@ -40,15 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
         <div className="flex items-center justify-between h-16">
           {/* Left section: Back button (top left corner) + Mobile Hamburger + Brand Logo */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            {/* Top Left Reverse / Back Button (<-) */}
-            <button
-              onClick={goBack}
-              className="px-3 py-2 rounded-xl text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-all flex items-center space-x-1.5 border border-slate-200/80 dark:border-slate-700 shadow-xs cursor-pointer active:scale-95 group"
-              title="Go Back (<-)"
-            >
-              <ArrowLeft className="w-4 h-4 stroke-[2.5] group-hover:-translate-x-0.5 transition-transform text-blue-600 dark:text-blue-400" />
-              <span className="text-xs font-bold">Back</span>
-            </button>
+            
 
             <button
               onClick={onToggleMobileSidebar}

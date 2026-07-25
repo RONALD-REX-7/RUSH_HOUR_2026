@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+const fs = require('fs');
+
+const content = `import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, Role, Problem, ProblemStatus, ChatMessage, NotificationItem } from '../types';
 import { mockEntrepreneurPerformances } from '../data/mockData';
 import { authApi } from '../services/authApi';
@@ -161,7 +163,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const updateProblemStatus = async (problemId: string, status: ProblemStatus) => {
-    await citizenApi.updateProblem(problemId, { status });
+    if (status === 'In Progress') {
+      await fetch('/api/entrepreneur/problems/'+problemId+'/progress', { method: 'PUT', headers: { 'Authorization': 'Bearer ' + localStorage.getItem('pc_jwt_token') } });
+    } else if (status === 'Solved') {
+      await fetch('/api/entrepreneur/problems/'+problemId+'/complete', { method: 'PUT', headers: { 'Authorization': 'Bearer ' + localStorage.getItem('pc_jwt_token') } });
+    } else {
+      await citizenApi.updateProblem(problemId, { status });
+    }
     await fetchAllData();
   };
 
@@ -197,22 +205,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     await fetchAllData();
   };
 
-  const updateUserProfile = async (updatedData: Partial<User>) => {
+  const updateUserProfile = (updatedData: Partial<User>) => {
     if (!currentUser) return;
     const newObj = { ...currentUser, ...updatedData };
     setCurrentUser(newObj);
     localStorage.setItem('pc_user', JSON.stringify(newObj));
-    // Optional API call to update user profile in DB could go here
-    try {
-      await fetch('/api/auth/me', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem('pc_jwt_token')
-        },
-        body: JSON.stringify(updatedData)
-      });
-    } catch(e) {}
   };
 
   const unreadNotificationCount = notifications.filter((n) => currentUser && n.userId === currentUser.id && !n.read).length;
@@ -237,3 +234,7 @@ export const useApp = () => {
   if (!context) throw new Error('useApp must be used within an AppProvider');
   return context;
 };
+`;
+
+fs.writeFileSync('src/context/AppContext.tsx', content);
+console.log('done writing context');
