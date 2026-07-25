@@ -1310,6 +1310,12 @@ Global Community Platform
   <img src="Details/citizen_dashboard.jpeg" alt="ProblemChain Citizen Dashboard" width="100%">
 </p>
 
+## 💼 Entrepreneur Dashboard
+
+<p align="center">
+  <img src="Details/entrepreneur_dashboard.jpeg" alt="ProblemChain Entrepreneur Dashboard" width="100%">
+</p>
+
 
 # 🎯 Conclusion
 
