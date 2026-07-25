@@ -1294,6 +1294,14 @@ Global Community Platform
 
 ---
 
+## 📸 Demo
+
+### Login Page
+
+<p align="center">
+  <img src="Details/login_page.jpeg" alt="ProblemChain Login Page" width="900">
+</p>
+
 # 🎯 Conclusion
 
 ProblemChain is an AI-powered platform that transforms verified community problems into startup opportunities. By combining Artificial Intelligence, secure web technologies, interactive maps, and transparent opportunity allocation, the platform creates value for citizens, entrepreneurs, and government authorities.
