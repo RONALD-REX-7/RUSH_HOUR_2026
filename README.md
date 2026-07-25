@@ -1298,9 +1298,7 @@ Global Community Platform
 
 ### Login Page
 
-<p align="center">
-  <img src="Details/login_page.jpeg" alt="ProblemChain Login Page" width="900">
-</p>
+![ProblemChain Login Page](Details/login_page.jpeg)
 
 # 🎯 Conclusion
 
