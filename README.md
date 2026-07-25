@@ -1304,6 +1304,13 @@ Global Community Platform
 </p>
 
 
+### 👤 Citizen Dashboard
+
+<p align="center">
+  <img src="Details/citizen_dashboard.jpeg" alt="ProblemChain Citizen Dashboard" width="100%">
+</p>
+
+
 # 🎯 Conclusion
 
 ProblemChain is an AI-powered platform that transforms verified community problems into startup opportunities. By combining Artificial Intelligence, secure web technologies, interactive maps, and transparent opportunity allocation, the platform creates value for citizens, entrepreneurs, and government authorities.
