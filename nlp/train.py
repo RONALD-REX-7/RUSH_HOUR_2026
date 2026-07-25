@@ -7,8 +7,7 @@ Train Spam Detection Model
 import os
 import joblib
 import pandas as pd
-
-from preprocess import preprocess
+from nlp.preprocess import preprocess
 
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
