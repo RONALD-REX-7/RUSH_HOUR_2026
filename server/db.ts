@@ -102,7 +102,7 @@ export async function initDatabase() {
     const userCount = await UserModel.countDocuments();
     if (userCount === 0) {
       console.log('[DB] Seeding initial mock users to MongoDB...');
-      await UserModel.insertMany(mockUsers);
+      await (UserModel as any).insertMany(mockUsers);
     }
 
     const problemCount = await ProblemModel.countDocuments();
@@ -143,7 +143,7 @@ export async function getUsers() {
 
 export async function getUserById(id: string) {
   if (isMongoConnected) {
-    const doc = await UserModel.findOne({ id }).lean();
+    const doc = await (UserModel as any).findOne({ id }).lean();
     return doc as unknown as User | null;
   }
   return memoryUsers.find((u) => u.id === id) || null;

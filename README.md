@@ -1,1392 +1,300 @@
-
 # 🚀 ProblemChain
 
-> ℹ️ **Hackathon Prototype Notice**: Developed during the **Rush Hour 2026** hackathon sprint. External demo URLs hosted during the competition may be decommissioned; instructions for local reproduction are detailed below.
+> ℹ️ **Hackathon Prototype Notice**: ProblemChain was developed as an open-innovation civic prototype during the **Rush Hour 2026 Hackathon**. This repository contains both the consolidated production-buildable TypeScript full-stack application on branch `main` and the historical competition sprint archive on branch `Test`.
 
 <div align="center">
 
-# AI-Powered Community Platform for Transforming Verified Local Problems into Startup Opportunities
+[![ProblemChain Full-Stack CI](https://github.com/RONALD-REX-7/RUSH_HOUR_2026/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/RONALD-REX-7/RUSH_HOUR_2026/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![React 19](https://img.shields.io/badge/React-19.0-61dafb.svg?logo=react)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.1-38bdf8.svg?logo=tailwindcss)](https://tailwindcss.com/)
+[![Express.js](https://img.shields.io/badge/Express.js-4.21-000000.svg?logo=express)](https://expressjs.com/)
 
-### 🏆 Domain: Open Innovations
+### AI-Powered Civic Issue Verification & Startup Opportunity Ecosystem
 
-*"Every Verified Community Problem is a Potential Startup Opportunity."*
+*"Transforming Verified Community Needs into Viable Local Startup Opportunities."*
 
 </div>
 
 ---
-# 📌 Table of Contents
 
-- Project Overview
-- Team Details
-- Problem Statement
-- Proposed Solution
-- Objectives
-- Features
-- Technology Stack
+## 📌 Table of Contents
 
----
-
-# 🌍 Project Overview
-
-ProblemChain is an AI-powered community platform designed to convert verified local community problems into startup opportunities.
-
-Many communities face problems such as the absence of pharmacies, grocery stores, EV charging stations, repair centers, educational services, healthcare facilities, and other essential businesses. Although these problems affect thousands of people, entrepreneurs often remain unaware of these genuine market demands.
-
-ProblemChain bridges this gap by enabling citizens to report community problems, using Artificial Intelligence to analyze and verify them, and finally transforming verified problems into startup opportunities for entrepreneurs.
-
-The platform creates a transparent ecosystem where citizens, entrepreneurs, administrators, and government authorities collaborate to solve real-world problems while encouraging innovation and economic growth.
+1. [Project Overview](#-project-overview)
+2. [Hackathon Team & Roles](#-hackathon-team--roles)
+3. [Problem Statement & Solution](#-problem-statement--solution)
+4. [Engineering Reality & Implementation Matrix](#-engineering-reality--implementation-matrix)
+5. [System Architecture & Visual Workflows](#-system-architecture--visual-workflows)
+6. [Interactive Application Dashboards](#-interactive-application-dashboards)
+7. [Repository File Tree](#-repository-file-tree)
+8. [REST API Documentation](#-rest-api-documentation)
+9. [Local Reproduction & Quickstart](#-local-reproduction--quickstart)
+10. [Hygiene, Security & Licensing](#-hygiene-security--licensing)
 
 ---
 
-# 🎯 Domain
-**Open Innovation**
+## 🌍 Project Overview
+
+Across urban and rural communities, residents frequently face acute, unmet civic and infrastructural needs: absence of pharmacies, lack of grocery stores, missing EV charging stations, unpaved roads, broken water mains, and insufficient local services. While these issues severely affect residents, aspiring local entrepreneurs struggle to obtain verified market demand data to justify opening new businesses in those specific locations.
+
+Traditional civic portals act merely as complaint receptacles without converting verified demand into economic initiatives.
+
+**ProblemChain** bridges this gap:
+1. **Citizens** submit localized problems with descriptions, priority levels, and photographic evidence.
+2. **Administrators** verify authentic reports, filter duplicates, and convert issues into actionable startup opportunities.
+3. **Entrepreneurs** discover verified demand via geographic density heatmaps, join a transparent allocation queue, accept contracts, and track resolution earnings.
+4. **Stakeholders** collaborate through integrated role-based messaging and progress monitoring.
 
 ---
 
-# 💡 Problem Statement
+## 👥 Hackathon Team & Roles
 
-## Converting Verified Problem into a Startup Solution using AI
+Developed during the **Rush Hour 2026 Hackathon** by a cross-functional engineering team:
 
-Across cities and rural communities, many essential services are unavailable due to the absence of a centralized platform that collects and verifies local community needs.
-
-Citizens frequently experience problems such as:
-
-- No pharmacy nearby
-- Lack of grocery stores
-- No EV charging station
-- No repair centers
-- Limited educational services
-- Poor healthcare accessibility
-
-Although these problems are genuine, entrepreneurs often fail to identify them as business opportunities.
-
-Current complaint portals only collect complaints.
-
-They **do not convert problems into business opportunities.**
-
-As a result,
-
-- Community problems remain unresolved.
-- Entrepreneurs invest without understanding actual demand.
-- Governments lack proper regional demand data.
-- Economic opportunities are lost.
+| Member | Role | Responsibilities | Sprint Branch |
+| :--- | :--- | :--- | :--- |
+| **Saravana** | Team Lead, AI/ML Engineer & Repo Manager | Architecture leadership, AI categorization pipelines, PR reviews | `AIML` |
+| **Ronald Rex C H** ([@RONALD-REX-7](https://github.com/RONALD-REX-7)) | QA Engineer & Software Tester | Functional/integration testing, CI pipeline, code audits, type verification | `main` / `testing` |
+| **Manoj** | Backend Developer | Express REST APIs, authentication, MongoDB models, database integration | `Backend` |
+| **Dharani** | Frontend Developer | React UI components, responsive layout, client API consumption | `Frontend` |
+| **Aaseef** | Documentation & Presentation Lead | Project documentation, README maintenance, slide deck, user guides | `Docs` |
+| **Sabarish** | Research Analyst & Scalability Planner | Market demand research, scalability models, technical architecture | `Research` |
 
 ---
 
-# 🚀 Proposed Solution
-
-ProblemChain provides a complete AI-powered ecosystem for solving this issue.
-
-The platform allows citizens to report verified community problems with supporting evidence.
-
-Artificial Intelligence automatically:
-
-- Categorizes the problem
-- Detects duplicate reports
-- Estimates community demand
-
-Administrators verify every report before publishing.
-
-Once verified, the problem is converted into a startup opportunity.
-
-Entrepreneurs browse opportunities using maps, analytics, and demand heatmaps.
-
-Interested entrepreneurs join a transparent queue.
-
-The selected entrepreneur starts the business.
-
-The platform continuously tracks implementation progress until the project is completed.
-
----
-
-# 🎯 Project Objectives
-
-The major objectives of ProblemChain are:
-
-- Create a centralized platform for reporting community problems.
-- Verify community reports before publication.
-- Use Artificial Intelligence for problem analysis.
-- Convert verified problems into startup opportunities.
-- Reduce duplicate reports.
-- Estimate business demand using AI.
-- Connect citizens and entrepreneurs.
-- Provide transparent opportunity allocation.
-- Enable data-driven business decisions.
-- Support sustainable community development.
-
----
-
-# 👥 Team Details
-
-| S.No | Team Member | Role |
-|------|-------------|------------------------------------------------|
-| 1 | Saravana | Team Lead, AI/ML Engineer & GitHub Repository Manager |
-| 2 | Manoj | Backend Developer |
-| 3 | Dharani | Frontend Developer |
-| 4 | Sabarish | Research Analyst & Scalability Planner |
-| 5 | RONALD REX| QA Engineer & Software Tester |
-| 6 | Mohamed Aaseef | Documentation & Presentation Lead |
-
----
-
-# 🎯 Stakeholders
-
-## 👨‍👩‍👧 Citizens
-
-Citizens can:
-
-- Report local problems
-- Upload supporting images
-- Track project progress
-- Receive notifications
-
----
-
-## 💼 Entrepreneurs
-
-Entrepreneurs can:
-
-- Browse startup opportunities
-- View demand heatmaps
-- Join opportunity queues
-- Start businesses
-- Track implementation
-
----
-
-## 🛡️ Administrators
-
-Administrators are responsible for:
-
-- Verifying reports
-- Managing users
-- Managing opportunities
-- Monitoring platform activities
-
----
-
-## 🏛️ Government Authorities
-
-Government authorities can:
-
-- Monitor regional demand
-- View analytics
-- Support planning
-- Improve public services
-
----
-
-# ✨ Project Features
-
-## 📝 Community Problem Reporting
-
-Citizens submit local problems by providing:
-
-- Location
-- Category
-- Description
-- Images
-- Supporting Evidence
-
----
-
-## 🤖 AI-Based Problem Analysis
-
-Artificial Intelligence automatically performs:
-
-- Problem Categorization
-- Duplicate Detection
-- Community Demand Estimation
-
-This reduces manual work and improves accuracy.
-
----
-
-## ✅ Problem Verification
-
-Administrators verify:
-
-- Authenticity
-- Evidence
-- Location
-- Duplicate Status
-
-Only verified reports become startup opportunities.
-
----
-
-## 🚀 Startup Opportunity Generation
-
-Verified community problems are converted into startup opportunities containing:
-
-- Business Category
-- Demand Level
-- Location
-- Community Information
-- Supporting Images
-
----
-
-## 🗺️ Interactive Maps
-
-Entrepreneurs explore opportunities using:
-
-- Interactive Maps
-- Demand Heatmaps
-- Smart Filters
-- Analytics Dashboard
-
----
-
-## 📋 Queue-Based Allocation
-
-Queue Rules:
-
-- Maximum 6 Entrepreneurs
-- First Come First Served
-- Automatic Queue Progression
-- Transparent Allocation
-
----
-
-## 🔒 Opportunity Locking
-
-Once accepted,
-
-- Opportunity becomes Claimed
-- Further claims are blocked
-- Queue closes automatically
-
----
-
-## 📈 Project Tracking
-
-The platform tracks:
-
-- Milestones
-- Completion Status
-- Timeline
-- Progress Updates
-
----
-
-## 🔔 Real-Time Notifications
-
-Notifications are sent to:
-
-- Citizens
-- Entrepreneurs
-- Administrators
-
----
-
-## 🌍 Transparent Ecosystem
-
-ProblemChain ensures:
-
-- Verified Reports
-- Fair Allocation
-- AI Decision Making
-- Community Development
-- Business Growth
-
----
-
-# 🛠️ Technology Stack
-
-| Category | Technology |
-|----------|------------|
-| Frontend | React.js, Vite, HTML5, CSS3, JavaScript |
-| UI Framework | Tailwind CSS |
-| Backend | Node.js, Express.js |
-| Database | MongoDB, Mongoose |
-| AI/ML | Python, Scikit-learn, Pandas, NumPy |
-| Authentication | JWT, bcrypt |
-| Maps | Leaflet.js, OpenStreetMap |
-| Image Storage | Cloudinary |
-| API Testing | Postman |
-| Testing | Jest, Supertest |
-| Deployment | Vercel, Render, MongoDB Atlas |
-| Version Control | Git & GitHub |
-
----
-# 🏗️ System Workflow
-
-The following diagram illustrates the overall architecture of **ProblemChain**, showing the interaction between users, the frontend, backend, AI/ML modules, database, cloud storage, and external services.
-
-<p align="center">
-  <img src="./Details/workflow.png" alt="System Architecture" width="1000">
-</p>
-
-# 💻 Why ProblemChain?
-
-Unlike traditional complaint portals, ProblemChain does not stop at collecting problems.
-
-Instead, it verifies community needs using Artificial Intelligence and transforms them into profitable startup opportunities. This approach benefits citizens by solving real problems, helps entrepreneurs identify genuine market demand, and supports governments with valuable regional insights for planning and development.
-
-
----
-# 🏗️ System Architecture
-
-ProblemChain follows a modular and scalable architecture that integrates Artificial Intelligence, modern web technologies, cloud storage, and geospatial visualization. The platform enables seamless communication between citizens, entrepreneurs, administrators, and government authorities while ensuring security, transparency, and efficient data processing.
-
----
-
-<p align="center">
-  <img src="./Details/System%20Architecture.jpeg" alt="ProblemChain System Architecture" width="1000">
-</p>
-
-
-## 🏛️ Architecture Layers
-
-### 👨‍👩‍👧 User Layer
-- Citizens report community problems.
-- Entrepreneurs discover startup opportunities.
-- Admin verifies reports and manages the platform.
-
-### 🎨 Presentation Layer
-Developed using:
-- React.js
-- Tailwind CSS
-- Vite
-
-Provides:
-- Responsive UI
-- Dashboard
-- Maps
-- Reports
-- Analytics
-
-### ⚙️ Backend Layer
-
-Built using:
-
-- Node.js
-- Express.js
-
-Responsibilities:
-
-- Authentication
-- Business Logic
-- API Management
-- Queue Management
-- Notification Service
-- AI Integration
-
-### 🤖 AI Layer
-
-Artificial Intelligence performs:
-
-- Problem Categorization
-- Duplicate Detection
-- Demand Estimation
-
-Technologies:
-
-- Python
-- Scikit-learn
-- Pandas
-- NumPy
-
-### 🗄️ Database Layer
-
-MongoDB stores:
-
-- Users
-- Reports
-- Opportunities
-- Queue
-- Notifications
-- Analytics
-
-### ☁️ Cloud Services
-
-Cloudinary
-
-Stores:
-
-- Images
-- Evidence
-- Project Photos
-
----
-
-
-# 🔄 Detailed Workflow
-
-ProblemChain transforms community problems into startup opportunities through the following workflow.
-
----
-
-## Step 1 – User Registration
-
-Users register as:
-
-- Citizen
-- Entrepreneur
-- Administrator
-
-Passwords are securely encrypted using bcrypt.
-
----
-
-## Step 2 – Community Problem Reporting
-
-Citizens submit:
-
-- Location
-- Description
-- Images
-- Supporting Evidence
-
-Status:
-
-**Pending Verification**
-
----
-
-## Step 3 – AI Analysis
-
-Artificial Intelligence automatically performs:
-
-- Categorization
-- Duplicate Detection
-- Demand Estimation
-
----
-
-## Step 4 – Admin Verification
-
-Admin checks:
-
-- Authenticity
-- Location
-- Evidence
-- Duplicate Reports
-
-If approved,
-
-↓
-
-Moves to Startup Opportunity.
-
----
-
-## Step 5 – Startup Opportunity Generation
-
-The verified report becomes a startup opportunity containing:
-
-- Business Category
-- Demand Level
-- Location
-- Images
-
----
-
-## Step 6 – Opportunity Discovery
-
-Entrepreneurs explore opportunities using:
-
-- Maps
-- Heatmaps
-- Smart Filters
-- Analytics Dashboard
-
----
-
-## Step 7 – Queue Allocation
-
-Queue Rules:
-
-- Maximum 6 Entrepreneurs
-- First Come First Served
-- Automatic Queue Transfer
-
----
-
-## Step 8 – Opportunity Locking
-
-When accepted,
-
-- Opportunity becomes Claimed.
-- Queue closes.
-- Duplicate claims are prevented.
-
----
-
-## Step 9 – Business Implementation
-
-Examples:
-
-- Pharmacy
-- Grocery Store
-- EV Charging Station
-- Repair Centre
-- Educational Service
-
----
-
-## Step 10 – Progress Tracking
-
-Platform monitors:
-
-- Milestones
-- Progress
-- Completion Status
-
-Notifications are sent to all stakeholders.
-
----
-
-## 📌 Workflow Diagram
-
-> **Insert your Workflow Diagram Here**
-
-```text
-Citizen Reports Problem
-          │
-          ▼
-AI Analysis
-          │
-          ▼
-Admin Verification
-          │
-          ▼
-Startup Opportunity
-          │
-          ▼
-Entrepreneurs Join Queue
-          │
-          ▼
-Opportunity Allocation
-          │
-          ▼
-Business Implementation
-          │
-          ▼
-Progress Tracking
+## 💡 Problem Statement & Solution
+
+```
+   [Citizen Reports Issue] ──> [Evidence & Geolocation]
+                                       │
+                                       ▼
+                         [Admin Verification Gate]
+                                       │
+                                       ▼
+                       [Startup Opportunity Published]
+                                       │
+                                       ▼
+                     [Entrepreneurs Browse Demand Map]
+                                       │
+                                       ▼
+                     [Queue-Based Contract Allocation]
+                                       │
+                                       ▼
+                    [Implementation & Progress Tracking]
+                                       │
+                                       ▼
+                     [Citizen Rating & Project Sign-off]
 ```
 
 ---
 
-# 📁 Project Folder Structure
+## 🔍 Engineering Reality & Implementation Matrix
+
+To maintain engineering transparency, the table below documents the delta between the initial hackathon sprint design proposal (`Details/Tech Stack.pdf`) and the actual implementation in this repository:
+
+| Capability | Hackathon Proposal | Implemented Codebase | Technical Verification Notes |
+| :--- | :--- | :--- | :--- |
+| **Frontend Framework** | React.js + Vite | React 19.0.1 + Vite 6.2.3 + TypeScript 5.8 | Full TypeScript client SPA with strict types. |
+| **Styling** | Tailwind CSS | Tailwind CSS v4.1.14 via `@tailwindcss/vite` | Modern utility styling with dark-mode support. |
+| **Geospatial Maps** | Leaflet.js + OpenStreetMap | SVG TopoJSON via `react-simple-maps` | World Atlas 110m projection with interactive issue density color-coding and popup modals. |
+| **Backend Runtime** | Node.js + Express.js | Node.js 22 + Express 4.21.2 (TypeScript) | Dual-mode Express server serving REST APIs and Vite middleware. |
+| **Database** | MongoDB Atlas | MongoDB Mongoose 9.8 + Resilient In-Memory Fallback | Fully connects to MongoDB when `MONGODB_URI` is set; automatically falls back to an in-memory mock store for zero-dependency local runs. |
+| **Authentication** | JWT + bcrypt | `jsonwebtoken` 9.0 + `bcryptjs` 3.0 | Secure password hashing on registration, Bearer token verification, and role-based route middleware. |
+| **Image Storage** | Cloudinary | In-Memory / Base64 Data URLs | Hackathon proposal planned Cloudinary; implemented prototype embeds data URLs directly into problem records to avoid external API dependencies. |
+| **Testing & CI** | Jest + Supertest | `tsc --noEmit` + Vite/esbuild Bundle Gate | GitHub Actions workflow validates TypeScript types and production builds on push/PR. |
+
+---
+
+## 🏗️ System Architecture & Visual Workflows
+
+### System Architecture
+The platform follows a layered client-server architecture with role-based routing, unified API controllers, and resilient persistence:
+
+<p align="center">
+  <img src="./Details/System%20Architecture.jpeg" alt="ProblemChain System Architecture" width="900">
+</p>
+
+### End-to-End Operational Workflow
+The lifecycle of an issue from citizen submission to entrepreneur execution and administrative oversight:
+
+<p align="center">
+  <img src="./Details/workflow.png" alt="ProblemChain Operational Workflow" width="900">
+</p>
+
+---
+
+## 💻 Interactive Application Dashboards
+
+ProblemChain provides tailored role-based portals for all three system actors:
+
+### 1. Citizen Portal
+Enables citizens to file geotagged infrastructure reports, attach photos, inspect problem status, and communicate directly with assigned entrepreneurs:
+
+<p align="center">
+  <img src="./Details/citizen_dashboard.jpeg" alt="Citizen Dashboard" width="850">
+</p>
+
+### 2. Entrepreneur Portal
+Allows entrepreneurs to browse open civic opportunities, view regional demand density, claim contracts, submit milestone updates, and track monthly earnings:
+
+<p align="center">
+  <img src="./Details/entrepreneur_dashboard.jpeg" alt="Entrepreneur Dashboard" width="850">
+</p>
+
+### 3. Administrator Portal
+Provides comprehensive administrative oversight: reviewing reported issues, verifying evidence, assigning entrepreneurs, inspecting platform analytics, and monitoring chat channels:
+
+<p align="center">
+  <img src="./Details/admin_dashboard.jpeg" alt="Admin Dashboard" width="850">
+</p>
+
+### 4. Authentication Shell
+Role-based authentication interface supporting seamless switching between Citizen, Entrepreneur, and Administrator profiles:
+
+<p align="center">
+  <img src="./Details/login_page.jpeg" alt="Login Page" width="700">
+</p>
+
+---
+
+## 📁 Repository File Tree
 
 ```text
-ProblemChain/
-│
-├── frontend/
-├── backend/
-├── ai-engine/
-├── docs/
-├── tests/
-│
-├── .env
-├── docker-compose.yml
-├── README.md
-└── LICENSE
+RUSH_HOUR_2026/
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # GitHub Actions CI workflow (Node 22, typecheck, build)
+├── Details/                     # Authentic hackathon artifacts, diagrams, and sprint specifications
+│   ├── System Architecture.jpeg # Architectural blueprint
+│   ├── workflow.png             # Operational workflow diagram
+│   ├── citizen_dashboard.jpeg   # Citizen UI mockup
+│   ├── entrepreneur_dashboard.jpeg # Entrepreneur UI mockup
+│   ├── admin_dashboard.jpeg     # Admin analytics mockup
+│   ├── login_page.jpeg          # Authentication UI mockup
+│   ├── Project Details.pdf      # Original hackathon project specification
+│   ├── Team Roles.pdf           # Team assignment and branch mapping
+│   └── Tech Stack.pdf           # Sprint technical proposal
+├── server/                      # Express.js backend services (TypeScript)
+│   ├── config/                  # Mongoose connection settings
+│   ├── controllers/             # Auth request controllers
+│   ├── middleware/              # JWT auth and central error handling middleware
+│   ├── models/                  # Mongoose data schemas (User, Problem, Chat, Notification)
+│   ├── routes/                  # Express REST routes (/api and /api/secure-auth)
+│   ├── services/                # Business logic and bcrypt password hashing
+│   └── db.ts                    # Dual-mode data layer: live MongoDB with in-memory fallback
+├── src/                         # React 19 Frontend (SPA)
+│   ├── components/
+│   │   ├── admin/               # Admin overview, problem queue, chat monitoring, analytics
+│   │   ├── auth/                # Login page with role-selector
+│   │   ├── chat/                # Real-time styled messaging interface
+│   │   ├── citizen/             # Issue reporting form, issue history, chat view
+│   │   ├── common/              # Notifications drawer, user profile management
+│   │   ├── entrepreneur/        # Opportunity list, active work, solved tasks, earnings
+│   │   ├── layout/              # Responsive navbar, collapsible sidebar, breadcrumbs
+│   │   └── ui/                  # Reusable UI tokens (LocationMap, Badge, Modal, StatCard)
+│   ├── context/                 # Central React AppContext state store
+│   ├── data/                    # Seed mock datasets & geographic coordinate tables
+│   ├── services/                # Axios API client integrations
+│   ├── types/                   # Strict TypeScript domain interfaces
+│   ├── App.tsx                  # Root layout orchestration and view switching
+│   ├── main.tsx                 # Client application entrypoint
+│   └── index.css                # Tailwind CSS v4 styling tokens
+├── server.ts                    # Full-stack server entry (Express API + Vite SPA serving)
+├── package.json                 # Project configuration & npm scripts
+├── tsconfig.json                # TypeScript compiler configuration
+├── vite.config.ts               # Vite configuration with React & Tailwind plugins
+├── index.html                   # HTML entrypoint
+├── LICENSE                      # Apache License 2.0
+├── SECURITY.md                  # Vulnerability disclosure policy
+├── CONTRIBUTING.md              # Contributor workflow and verification guide
+└── .env.example                 # Environment variables placeholder template
 ```
 
 ---
 
-## 📂 Frontend
+## 🔌 REST API Documentation
 
-Contains:
+The Express server exposes the following REST API endpoints:
 
-- Components
-- Pages
-- Services
-- Assets
-- Routes
-- Context
-- Hooks
+### System & Health
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/health` | System health check and database mode status (`MongoDB` or `Memory Store`). |
 
-Developed using:
+### Authentication
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/auth/login` | Fast prototype login by role and optional email; returns JWT token. |
+| `GET` | `/api/auth/me` | Returns authenticated user profile via Bearer JWT header. |
+| `POST` | `/api/secure-auth/register` | Mongoose/bcrypt registration with salted password hashing. |
+| `POST` | `/api/secure-auth/login` | Mongoose/bcrypt login with credential verification. |
+| `GET` | `/api/secure-auth/profile` | Protected profile route secured by JWT middleware. |
 
-- React.js
-- Tailwind CSS
-- Vite
+### Problems & Civic Opportunities
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/problems` | Fetch all civic problems. |
+| `POST` | `/api/problems` | Submit a new problem report with category, location, and images. |
+| `PUT` | `/api/problems/:id` | Update an existing problem record. |
+| `DELETE` | `/api/problems/:id` | Delete a problem record by ID. |
+| `POST` | `/api/problems/:id/assign` | Assign an entrepreneur to an active problem contract. |
+| `POST` | `/api/problems/:id/rating` | Citizen submits star rating and feedback on a solved problem. |
 
----
-
-## ⚙️ Backend
-
-Contains:
-
-- Controllers
-- Routes
-- Models
-- Middleware
-- Services
-- Configurations
-
-Handles:
-
-- APIs
-- Authentication
-- Business Logic
-- Database Communication
-
----
-
-## 🤖 AI Engine
-
-Contains:
-
-- ML Models
-- Datasets
-- Prediction Scripts
-- Training Scripts
-
-Performs:
-
-- Categorization
-- Duplicate Detection
-- Demand Prediction
+### Collaboration & Messaging
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/chats` | Retrieve chat messages across problems. |
+| `POST` | `/api/chats` | Post a new message with optional attachment metadata. |
+| `GET` | `/api/notifications` | Retrieve notifications for the active user. |
+| `PUT` | `/api/notifications/:id/read` | Mark a specific notification as read. |
+| `PUT` | `/api/notifications/user/:userId/read-all` | Mark all user notifications as read. |
 
 ---
 
-## 📄 Documentation
+## ⚙️ Local Reproduction & Quickstart
 
-Includes:
+### Prerequisites
+- **Node.js**: `>= 20.0.0` (Node 22 recommended)
+- **npm**: `>= 10.0.0`
+- *(Optional)* **MongoDB**: Local or Atlas instance. If omitted, the server automatically runs in zero-dependency **In-Memory Mock Store Mode**.
 
-- README
-- SRS
-- User Guide
-- API Documentation
-
----
-
-## 🧪 Testing
-
-Separate folders for:
-
-- Backend Testing
-- Frontend Testing
-- API Testing
-
----
-
-# ⚙️ Installation Guide
-
-## Requirements
-
-- Node.js
-- Python
-- MongoDB
-- Git
-- VS Code
-
----
-
-## Clone Repository
+### Quickstart Steps
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/RONALD-REX-7/RUSH_HOUR_2026.git
-
 cd RUSH_HOUR_2026
-```
 
----
-
-## Install Frontend
-
-```bash
-cd frontend
-
+# 2. Install dependencies
 npm install
+
+# 3. Verify static type analysis
+npm run lint
+
+# 4. Verify production bundling
+npm run build
+
+# 5. Launch the full-stack server
+npm run dev
 ```
 
----
+The server will launch on `http://localhost:3000`. Open your browser to access the complete application.
 
-## Install Backend
-
-```bash
-cd backend
-
-npm install
-```
-
----
-
-## Install AI Module
-
-```bash
-cd ai-engine
-
-pip install -r requirements.txt
-```
-
----
-
-## Configure Environment Variables
-
-Create:
-
-```
-backend/.env
-```
-
-Example:
+### Environment Configuration (Optional)
+To run against a live MongoDB database, create a `.env` file in the root directory:
 
 ```env
-PORT=5000
-
-MONGODB_URI=xxxxxxxx
-
-JWT_SECRET=xxxxxxxx
-
-CLOUDINARY_API_KEY=xxxxxxxx
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/problemchain
+JWT_SECRET=your_custom_jwt_secret_key
 ```
 
 ---
 
-## Start Backend
-
-```bash
-npm run dev
-```
-
----
-
-## Start Frontend
-
-```bash
-npm run dev
-```
-
----
-
-## Start AI Engine
-
-```bash
-python app.py
-```
-
----
-
-## Open Browser
-
-```
-http://localhost:5173
-```
-
----
-
-# 📖 Usage
-
-1. Register
-2. Login
-3. Report Problem
-4. AI Analysis
-5. Admin Verification
-6. Startup Opportunity Created
-7. Entrepreneurs Join Queue
-8. Opportunity Allocated
-9. Business Started
-10. Progress Tracking
-
----
-
-# 🔌 API Documentation
-
-The frontend communicates with the backend through REST APIs.
-
----
-
-## Authentication APIs
-
-| Method | Endpoint |
-|---------|----------|
-| POST | /api/auth/register |
-| POST | /api/auth/login |
-| GET | /api/auth/profile |
-
----
-
-## Report APIs
-
-| Method | Endpoint |
-|---------|----------|
-| POST | /api/reports |
-| GET | /api/reports |
-| PUT | /api/reports/:id |
-| DELETE | /api/reports/:id |
-
----
-
-## Opportunity APIs
-
-| Method | Endpoint |
-|---------|----------|
-| GET | /api/opportunities |
-| POST | /api/opportunities |
-| PUT | /api/opportunities/:id |
-
----
-
-## Queue APIs
-
-| Method | Endpoint |
-|---------|----------|
-| POST | /api/queue/join |
-| GET | /api/queue/:id |
-| PUT | /api/queue/accept/:id |
-
----
-
-# 🗄️ Database Design
-
-Collections:
-
-- Users
-- Reports
-- Opportunities
-- Queue
-- Notifications
-
----
-
-## Database Workflow
-
-```text
-Citizen
-   │
-   ▼
-Reports Collection
-   │
-   ▼
-AI Processing
-   │
-   ▼
-Verification
-   │
-   ▼
-Opportunity Collection
-   │
-   ▼
-Queue Collection
-   │
-   ▼
-Notifications
-```
-
----
-
-## 📌 Part 2 Summary
-
-Part 2 describes the technical implementation of ProblemChain, including its modular architecture, AI-driven workflow, organized folder structure, installation process, REST APIs, and MongoDB database design. These components work together to provide a secure, scalable, and intelligent platform for transforming verified community problems into startup opportunities.
-
----
-# 🔐 Security Measures
-
-ProblemChain is designed with multiple layers of security to protect user data, prevent unauthorized access, and ensure a transparent platform for citizens and entrepreneurs.
-
----
-
-## 🛡️ Security Features
-
-### 🔑 JWT Authentication
-- Secure login for all users.
-- Token-based authentication.
-- Protected REST APIs.
-
----
-
-### 🔒 Password Encryption
-
-- Passwords encrypted using **bcrypt**.
-- Plain text passwords are never stored.
-
----
-
-### 👥 Role-Based Access Control (RBAC)
-
-Three different user roles:
-
-- 👨 Citizen
-- 💼 Entrepreneur
-- 🛡️ Administrator
-
-Each user can access only authorized features.
-
----
-
-### ☁️ Secure Cloud Storage
-
-Images and supporting evidence are stored securely using **Cloudinary**.
-
----
-
-### 🗄️ Database Security
-
-MongoDB Atlas provides:
-
-- Authentication
-- Secure Connections
-- Cloud Backup
-- Data Encryption
-
----
-
-### 🤖 AI Verification
-
-Before publishing,
-
-AI performs:
-
-- Categorization
-- Duplicate Detection
-- Demand Estimation
-
-Only verified reports become startup opportunities.
-
----
-
-### 📋 Queue Protection
-
-- Maximum 6 entrepreneurs
-- Opportunity Locking
-- Automatic Queue Progression
-
-Ensures transparency and fairness.
-
----
-
-### 🔐 Security Architecture
-
-```text
-Users
-   │
-   ▼
-JWT Authentication
-   │
-   ▼
-Role-Based Access
-   │
-   ▼
-Protected REST APIs
-   │
-   ▼
-Business Logic
-   │
-   ▼
-MongoDB + Cloudinary
-```
-
----
-
-# 🧪 Testing & Performance
-
-To ensure quality, ProblemChain follows multiple testing techniques.
-
----
-
-## Testing Types
-
-### ✅ Unit Testing
-
-Tests:
-
-- Backend Functions
-- AI Models
-
-Tools:
-
-- Jest
-
----
-
-### 🔄 Integration Testing
-
-Checks communication between:
-
-- Frontend ↔ Backend
-- Backend ↔ Database
-- Backend ↔ AI
-- Backend ↔ Cloudinary
-
----
-
-### 🌐 API Testing
-
-Tools:
-
-- Postman
-- Supertest
-
-APIs Tested
-
-- Login
-- Registration
-- Reports
-- Opportunities
-- Queue
-- Notifications
-
----
-
-### 💻 UI Testing
-
-Checks:
-
-- Responsiveness
-- Navigation
-- User Experience
-
----
-
-### 🔒 Security Testing
-
-Tests:
-
-- JWT Authentication
-- Password Encryption
-- Role Access
-- Protected APIs
-
----
-
-### ⚡ Performance Testing
-
-Measures:
-
-- API Response Time
-- AI Processing
-- Database Speed
-- Page Loading
-
----
-
-### 📊 Testing Workflow
-
-```text
-Code Development
-      │
-      ▼
-Unit Testing
-      │
-      ▼
-Integration Testing
-      │
-      ▼
-API Testing
-      │
-      ▼
-Security Testing
-      │
-      ▼
-Performance Testing
-      │
-      ▼
-Deployment
-```
-
----
-
-# 🚧 Challenges Faced
-
-During development, several technical challenges were encountered.
-
----
-
-## 1️⃣ Community Report Verification
-
-Ensuring that reported problems are genuine.
-
-Solution:
-
-- AI Analysis
-- Admin Verification
-
----
-
-## 2️⃣ Duplicate Reports
-
-Multiple users may report the same issue.
-
-Solution:
-
-- AI Duplicate Detection
-
----
-
-## 3️⃣ Demand Estimation
-
-Estimating actual business demand.
-
-Solution:
-
-- Machine Learning Models
-- Location Analysis
-
----
-
-## 4️⃣ Fair Opportunity Allocation
-
-Providing equal opportunities to entrepreneurs.
-
-Solution:
-
-- Queue-Based Allocation
-- Opportunity Locking
-
----
-
-## 5️⃣ Multi-Technology Integration
-
-Integrating:
-
-- React.js
-- Node.js
-- MongoDB
-- Python
-- Cloudinary
-- Maps
-
----
-
-## 6️⃣ Data Scalability
-
-Managing:
-
-- Reports
-- Images
-- Users
-- Opportunities
-
-Solution:
-
-- MongoDB Atlas
-- Cloud Storage
-
----
-
-# 🔮 Future Scope
-
-ProblemChain can be expanded with many advanced features.
-
----
-
-## 📱 Mobile Application
-
-Develop Android & iOS applications.
-
----
-
-## 🤖 Advanced AI
-
-Use:
-
-- NLP
-- Deep Learning
-- Better Recommendations
-
----
-
-## 🏛️ Government Integration
-
-Connect with
-
-- Smart City Projects
-- Municipal Portals
-
----
-
-## 🌍 Multilingual Support
-
-Support:
-
-- English
-- Tamil
-- Hindi
-- Telugu
-- Malayalam
-
----
-
-## 📊 Predictive Analytics
-
-Predict future business demand.
-
----
-
-## 🗺️ Advanced GIS
-
-Add:
-
-- Live Heatmaps
-- Smart Analytics
-- Satellite Maps
-
----
-
-## ☁️ Cloud Deployment
-
-Future deployment using:
-
-- Docker
-- Kubernetes
-- Microservices
-
----
-
-# 🚀 Future Roadmap
-
-```text
-Current Platform
-        │
-        ▼
-Mobile Application
-        │
-        ▼
-Advanced AI
-        │
-        ▼
-Government Integration
-        │
-        ▼
-Predictive Analytics
-        │
-        ▼
-Cloud Deployment
-        │
-        ▼
-Global Community Platform
-```
-
----
-
-# 📚 References
-
-## Books
-
-- Software Engineering – Ian Sommerville
-- Clean Architecture – Robert C. Martin
-- Learning React – Alex Banks
-- MongoDB: The Definitive Guide
-- Hands-On Machine Learning – Aurélien Géron
-
----
-
-## Official Documentation
-
-- React
-- Node.js
-- Express.js
-- MongoDB
-- Tailwind CSS
-- Leaflet.js
-- Cloudinary
-- JWT
-- Scikit-learn
-- Pandas
-- NumPy
-
----
-
-## Development Tools
-
-- Visual Studio Code
-- Git
-- GitHub
-- MongoDB Atlas
-- Postman
-- Render
-- Vercel
-- Canva
-
----
-
-
-## 📸 Demo
-
-### Login Page
-
-<p align="center">
-  <img src="Details/login_page.jpeg" alt="ProblemChain Login Page" width="900">
-</p>
-
-
-### 👤 Citizen Dashboard
-
-<p align="center">
-  <img src="Details/citizen_dashboard.jpeg" alt="ProblemChain Citizen Dashboard" width="100%">
-</p>
-
-## 💼 Entrepreneur Dashboard
-
-<p align="center">
-  <img src="Details/entrepreneur_dashboard.jpeg" alt="ProblemChain Entrepreneur Dashboard" width="100%">
-</p>
-
-## 🛡️ Admin Dashboard
-
-<p align="center">
-  <img src="Details/admin_dashboard.jpeg" alt="ProblemChain Admin Dashboard" width="100%">
-</p>
-
-
-# 🎯 Conclusion
-
-ProblemChain is an AI-powered platform that transforms verified community problems into startup opportunities. By combining Artificial Intelligence, secure web technologies, interactive maps, and transparent opportunity allocation, the platform creates value for citizens, entrepreneurs, and government authorities.
-
-Instead of simply collecting complaints, ProblemChain identifies genuine community needs and converts them into sustainable business opportunities, promoting innovation, entrepreneurship, and economic development.
-
----
-
-# 🌍 Project Impact
-
-### 👨 Citizens
-
-- Community problems get solved.
-- Transparent progress tracking.
-
-### 💼 Entrepreneurs
-
-- Verified business opportunities.
-- Reduced investment risk.
-- Real demand before investing.
-
-### 🏛️ Government
-
-- Regional demand analytics.
-- Better planning.
-- Community development.
-
----
-
-# 🙏 Acknowledgement
-
-We sincerely thank our mentors, faculty members, hackathon organizers, judges, and the open-source community for their valuable guidance and support throughout the development of **ProblemChain**.
-
-We also thank the developers of React.js, Node.js, MongoDB, Python, and other open-source technologies that made this project possible.
-
----
-
-# 👨‍💻 Developed By
-
-## Team ProblemChain
-
-| Member | Responsibility |
-|---------|----------------|
-| Saravana | Team Lead, AI/ML Engineer & GitHub Manager |
-| Manoj | Backend Developer |
-| Dharani | Frontend Developer |
-| Sabarish | Research Analyst & Scalability Planner |
-| Ronald | QA Engineer & Software Tester |
-| Aaseef | Documentation & Presentation Lead |
-
----
-
-<div align="center">
-
-# ⭐ ProblemChain
-
-### **AI-Powered Community Platform for Transforming Verified Local Problems into Startup Opportunities**
-
-### 🚀 "Every Verified Community Problem is a Potential Startup Opportunity."
-
-**Made with ❤️ by Team ProblemChain**
-
-</div>
->>>>>>> bb7c894e267b621a934ca0573a7a1013f9b78242
+## 🛡️ Hygiene, Security & Licensing
+
+- **License**: Released under the **Apache License 2.0**. See [`LICENSE`](./LICENSE) for terms.
+- **Security Policy**: See [`SECURITY.md`](./SECURITY.md) for vulnerability disclosure guidelines.
+- **Contributing**: Development guidelines and branch governance are outlined in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+- **Branch Notice**: The default branch is `main`. Branch `Test` is preserved as an archive of the raw hackathon multi-directory submission.
