@@ -1,5 +1,7 @@
 # 🚀 ProblemChain
 
+> ℹ️ **Hackathon Prototype Notice**: Developed during the **Rush Hour 2026** hackathon sprint. External demo URLs hosted during the competition may be decommissioned; instructions for local reproduction are detailed below.
+
 <div align="center">
 
 # AI-Powered Community Platform for Transforming Verified Local Problems into Startup Opportunities
@@ -678,9 +680,9 @@ Separate folders for:
 ## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/ProblemChain.git
+git clone https://github.com/RONALD-REX-7/RUSH_HOUR_2026.git
 
-cd ProblemChain
+cd RUSH_HOUR_2026
 ```
 
 ---
