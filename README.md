@@ -54,7 +54,7 @@ Developed during the **Rush Hour 2026 Hackathon** by a cross-functional engineer
 
 | Member | Role | Responsibilities | Sprint Branch |
 | :--- | :--- | :--- | :--- |
-| **Saravana** | Team Lead, AI/ML Engineer & Repo Manager | Architecture leadership, AI categorization pipelines, PR reviews | `AIML` |
+| [**Saravanakumar G**](https://github.com/saravana5632) | Team Lead, AI/ML Engineer & Repo Manager | Architecture leadership, AI categorization pipelines, PR reviews | `AIML` |
 | **Ronald Rex C H** ([@RONALD-REX-7](https://github.com/RONALD-REX-7)) | QA Engineer & Software Tester | Functional/integration testing, CI pipeline, code audits, type verification | `main` / `testing` |
 | **Manoj** | Backend Developer | Express REST APIs, authentication, MongoDB models, database integration | `Backend` |
 | **Dharani** | Frontend Developer | React UI components, responsive layout, client API consumption | `Frontend` |
