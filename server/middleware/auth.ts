@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { User } from '../models/User';
+import { getJwtSecret } from '../config/jwt';
 
 export interface AuthRequest extends Request {
   user?: any;
@@ -11,18 +12,18 @@ export const authenticate = async (req: AuthRequest, res: Response, next: NextFu
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       token = req.headers.authorization.split(' ')[1];
-      const decoded: any = jwt.verify(token, process.env.JWT_SECRET || 'your-super-secret-jwt-key');
+      const decoded: any = jwt.verify(token, getJwtSecret());
       req.user = await User.findById(decoded.id).select('-password');
-      next();
+      return next();
     } catch (error) {
       res.status(401);
-      next(new Error('Not authorized, token failed'));
+      return next(new Error('Not authorized, token failed'));
     }
   }
 
   if (!token) {
     res.status(401);
-    next(new Error('Not authorized, no token'));
+    return next(new Error('Not authorized, no token'));
   }
 };
 

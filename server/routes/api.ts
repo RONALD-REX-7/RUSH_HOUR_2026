@@ -15,10 +15,11 @@ import {
   getDbStatus,
 } from '../db';
 import { User, Role, Problem, ChatMessage, NotificationItem } from '../../src/types';
+import { getJwtSecret } from '../config/jwt';
 
 export const apiRouter = Router();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'problemchain_default_jwt_secret_key';
+const JWT_SECRET = getJwtSecret();
 
 // JWT Auth Middleware
 export interface AuthenticatedRequest extends Request {
