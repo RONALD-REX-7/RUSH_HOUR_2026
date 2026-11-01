@@ -48,18 +48,29 @@ Traditional civic portals act merely as complaint receptacles without converting
 
 ---
 
-## 👥 Hackathon Team & Roles
+## 👥 Hackathon Team & Multi-Dimensional Contribution Matrix
 
-Developed during the **Rush Hour 2026 Hackathon** by a cross-functional engineering team:
+Developed during the **Rush Hour 2026 Hackathon** by a cross-functional engineering team. In adherence to strict portfolio integrity, all contributions are mapped below by subsystem and verified commit provenance:
 
-| Member | Role | Responsibilities | Sprint Branch |
-| :--- | :--- | :--- | :--- |
-| [**Saravanakumar G**](https://github.com/saravana5632) | Team Lead, AI/ML Engineer & Repo Manager | Architecture leadership, AI categorization pipelines, PR reviews | `AIML` |
-| **Ronald Rex C H** ([@RONALD-REX-7](https://github.com/RONALD-REX-7)) | QA Engineer & Software Tester | Functional/integration testing, CI pipeline, code audits, type verification | `main` / `testing` |
-| **Manoj** | Backend Developer | Express REST APIs, authentication, MongoDB models, database integration | `Backend` |
-| **Dharani** | Frontend Developer | React UI components, responsive layout, client API consumption | `Frontend` |
-| **Aaseef** | Documentation & Presentation Lead | Project documentation, README maintenance, slide deck, user guides | `Docs` |
-| **Sabarish** | Research Analyst & Scalability Planner | Market demand research, scalability models, technical architecture | `Research` |
+| Contributor | Official Hackathon Role | Verified Subsystem Contributions | Primary Sprint Branch | Provenance / Evidence Level |
+| :--- | :--- | :--- | :---: | :---: |
+| [**SaravanaKumar G**](https://github.com/saravana5632) (`saravana5632`) | **Team Lead & AI/ML Engineer** | AI categorization pipeline, image classifier (`AIML`), project renaming to ProblemChain, admin dashboard documentation. | `AIML`, `Test` | **High** (Verified Commits: `feat: Image Classifier`, `5a4b930`, etc.) |
+| **Ronald Rex C H** ([@RONALD-REX-7](https://github.com/RONALD-REX-7)) | **Repository Maintainer, DevSecOps & QA** | Initial repo scaffold (`a3ab592`), security remediation across branches (purging committed `.env` files, `.gitignore` setup), license/security documentation, Mongoose TypeScript interface fixes, GitHub Actions CI workflow, and full-stack backend auth hardening. | `main`, `remediation/security-hardening` | **High** (Verified Commits: `07c03b4`, `338599f`, `7982295`, `1cc88f3`, `fe01973`, `5b70b96`, `af2e4be`) |
+| **Manoj R** (`MANOJ230527`) | **Backend Developer** | Express REST APIs, Mongoose data models (`User`, `Problem`, `Chat`, `Notification`), MongoDB aggregation queries, and application consolidation. | `Backend`, `main` | **High** (Verified Commits: `8303787 Fix: Backend Updates`, `Final Code`, `Updated Application`) |
+| **Dharani Dharan J** (`d38403252`) | **Frontend Developer** | React SPA views (Citizen workstation, Entrepreneur discovery, Admin dashboard), responsive UI layout, Tailwind CSS styling, and client API binding. | `Frontend` | **High** (Verified Commits: `Modified code`, `Dharani: New Feature Added`, `Fix: Reduced Code`) |
+| **Mohamed Aaseef** (`mmohamedaaseef`) | **Documentation & Presentation Lead** | Project pitch presentation deck, architectural summaries, and user guide assets. | `Docs` | **Medium** (Team attribution & sprint asset commits) |
+| **Sabarish J** (`kandhavel4269`) | **Research Analyst & Scalability Planner** | Civic problem domain research, geographic market viability analysis, and scalability planning. | `Research` | **Medium** (Team attribution & sprint research commits) |
+
+### Preserved Branch Topology & Historical Archives
+This repository preserves all competition sprint branches without history rewriting:
+- `main` (Default): Consolidated full-stack TypeScript application (Vite client + Express server).
+- `Test`: Standalone historical hackathon sprint archive (no common ancestor with `main`; preserved as-is).
+- `AIML`: Image classification and problem categorization prototypes.
+- `Backend`: Initial Express and MongoDB integration sprint.
+- `Frontend`: React client component development sprint.
+- `Docs`: Hackathon slide decks, presentation PDFs, and documentation drafts.
+- `Research`: Market demand studies and scalability notes.
+- `remediation/security-hardening`: Extended backend JWT authentication and route guard hardening branch.
 
 ---
 

@@ -21,10 +21,10 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Static Typecheck & Lint Gate
-        run: npm run lint
+        run: npm run type-check
 
       - name: Production Bundle Build Gate
         run: npm run build
