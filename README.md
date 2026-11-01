@@ -50,7 +50,7 @@ Traditional civic portals act merely as complaint receptacles without converting
 
 ## 👥 Hackathon Team & Multi-Dimensional Contribution Matrix
 
-Developed during the **Rush Hour 2026 Hackathon** by a cross-functional engineering team. In adherence to strict portfolio integrity, all contributions are mapped below by subsystem and verified commit provenance:
+Developed during the **Rush Hour 2026 Hackathon** by a cross-functional engineering team. In adherence to strict portfolio integrity, all contributions are mapped below by subsystem, commit provenance, and collaborative hackathon engagement:
 
 | Contributor | Official Hackathon Role | Verified Subsystem Contributions | Primary Sprint Branch | Provenance / Evidence Level |
 | :--- | :--- | :--- | :---: | :---: |
@@ -60,6 +60,25 @@ Developed during the **Rush Hour 2026 Hackathon** by a cross-functional engineer
 | **Dharani Dharan J** (`d38403252`) | **Frontend Developer** | React SPA views (Citizen workstation, Entrepreneur discovery, Admin dashboard), responsive UI layout, Tailwind CSS styling, and client API binding. | `Frontend` | **High** (Verified Commits: `Modified code`, `Dharani: New Feature Added`, `Fix: Reduced Code`) |
 | **Mohamed Aaseef** (`mmohamedaaseef`) | **Documentation & Presentation Lead** | Project pitch presentation deck, architectural summaries, and user guide assets. | `Docs` | **Medium** (Team attribution & sprint asset commits) |
 | **Sabarish J** (`kandhavel4269`) | **Research Analyst & Scalability Planner** | Civic problem domain research, geographic market viability analysis, and scalability planning. | `Research` | **Medium** (Team attribution & sprint research commits) |
+
+### Reconciled Breakdown of Ronald Rex's Contributions
+
+To ensure complete transparency and reconcile public profiles (such as LinkedIn posts citing repository management and QA) with in-person hackathon team dynamics, Ronald Rex's contributions are categorized into two explicit tiers:
+
+#### A. Git-Verified Repository & Engineering Contributions (Audited via Git Log)
+- **Scaffold & Architecture Setup**: Authored the initial repository architecture and directory layout (`a3ab592`).
+- **Branch Governance & Preservation**: Maintained and coordinated Git branch topology across 8 competition sprint branches (`main`, `AIML`, `Backend`, `Frontend`, `Docs`, `Research`, `Test`, `patch-1`), ensuring historical records remain intact without destructive rewriting.
+- **Security & Secret Remediation**: Identified and scrubbed committed `.env` credentials, instituted proper `.gitignore` patterns, and isolated sensitive environment variables.
+- **TypeScript Type Safety**: Resolved Mongoose model typing discrepancies (`IProblem`, `IUser`, `INotification`), eliminated strict compiler errors, and aligned server route signatures.
+- **CI/CD Quality Gates**: Configured and hardened GitHub Actions automation (`.github/workflows/ci.yml`) using minimal security permissions (`permissions: contents: read`) and `npm ci` caching.
+- **API & Route Guard Hardening**: Implemented role-based route protection, JWT authentication middleware, and resilient fallback state stores for off-grid demonstration.
+
+#### B. Owner-Reported Collaborative Hackathon Contributions (In-Person Event)
+- **Civic Problem Identification**: Conducted domain research into civic complaint bottlenecks, analyzing why conventional grievance portals fail to incentivize resolution compared to entrepreneurial opportunity matching.
+- **Solution Ideation**: Co-developed the core problem-to-contract conversion workflow and queue-based reward distribution mechanism.
+- **Pitch Deck & Presentation**: Co-authored the project pitch slides, architecture diagrams, and value proposition framing used in judging rounds.
+- **Full-Stack Co-Development**: Collaborated with frontend and backend teammates during sprint sessions on UI integration, form state handling, and API connectivity.
+- **End-to-End QA Testing**: Executed functional manual testing across Citizen, Administrator, and Entrepreneur user flows, catching validation edge cases before final presentation.
 
 ### Preserved Branch Topology & Historical Archives
 This repository preserves all competition sprint branches without history rewriting:
