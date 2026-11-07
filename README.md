@@ -1,3 +1,13 @@
+<div align="center">
+
+<img src="portfolio-identity.svg" alt="ProblemChain — project portfolio banner" width="100%">
+
+[← Back to Ronald Rex's engineering portfolio](https://github.com/RONALD-REX-7)
+
+</div>
+
+---
+
 # 🚀 ProblemChain
 
 > ℹ️ **Hackathon Prototype Notice**: ProblemChain was developed as an open-innovation civic prototype during the **Rush Hour 2026 Hackathon**. This repository contains both the consolidated production-buildable TypeScript full-stack application on branch `main` and the historical competition sprint archive on branch `Test`.
@@ -324,6 +334,7 @@ JWT_SECRET=your_custom_jwt_secret_key
 
 ## 🛡️ Hygiene, Security & Licensing
 
+- **Maintainer & Architectural Attribution**: [Ronald Rex](https://github.com/RONALD-REX-7) — Full-stack Next.js/TypeScript architecture, API integration, and portfolio presentation.
 - **License**: Released under the **Apache License 2.0**. See [`LICENSE`](./LICENSE) for terms.
 - **Security Policy**: See [`SECURITY.md`](./SECURITY.md) for vulnerability disclosure guidelines.
 - **Contributing**: Development guidelines and branch governance are outlined in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
