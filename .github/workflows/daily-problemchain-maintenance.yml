@@ -1,0 +1,75 @@
+name: Daily ProblemChain Platform Maintenance
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Every day at 00:00 UTC (05:30 AM IST)
+  workflow_dispatch: # Allows manual trigger anytime from Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-maintenance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  daily-problemchain-verify:
+    name: Typecheck & Build Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Static Typecheck Gate
+        id: typecheck-run
+        run: |
+          npm run type-check
+          echo "typecheck_status=0 Errors" >> $GITHUB_OUTPUT
+
+      - name: Production Bundle Build Gate
+        id: build-run
+        run: |
+          npm run build
+          echo "build_status=Verified Build" >> $GITHUB_OUTPUT
+
+      - name: Update Daily ProblemChain Ledger
+        run: |
+          DATE_STR=$(date -u +"%Y-%m-%d")
+          TIME_STR=$(date -u +"%H:%M:%S UTC")
+          TC_ST="${{ steps.typecheck-run.outputs.typecheck_status }}"
+          BLD_ST="${{ steps.build-run.outputs.build_status }}"
+          
+          echo "| $DATE_STR | $TIME_STR | Node 22 | $TC_ST | $BLD_ST | ✅ Healthy |" >> docs/DAILY_PROBLEMCHAIN_HEALTH.md
+          echo "Updated docs/DAILY_PROBLEMCHAIN_HEALTH.md for $DATE_STR"
+
+      - name: Commit and Push Verified Telemetry
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/DAILY_PROBLEMCHAIN_HEALTH.md
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(telemetry): update daily ProblemChain platform ledger [skip ci]
+
+          Automated daily TypeScript typecheck and production bundle build verification.
+
+          Co-authored-by: Ronald Rex <211186833+RONALD-REX-7@users.noreply.github.com>"
+            git push origin main
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
