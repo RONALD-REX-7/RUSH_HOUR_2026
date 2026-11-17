@@ -8,7 +8,7 @@ export default defineConfig(() => {
     plugins: [react(), tailwindcss()],
     // Vercel serves public/ assets through its CDN. Disable Vite's source
     // public directory because public/ is the generated production output.
-    publicDir: false,
+    publicDir: false as const,
     build: {
       outDir: 'public',
     },
