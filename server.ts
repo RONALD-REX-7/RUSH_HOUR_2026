@@ -24,8 +24,7 @@ async function startServer() {
   // Mount API REST routes FIRST
   app.use('/api', apiRouter);
 
-  // Mongoose/bcrypt-backed auth routes (register/login/profile) — previously defined
-  // but never mounted, so /api/auth/register never worked
+  // Mongoose/bcrypt-backed auth routes — previously defined but never mounted
   app.use('/api/secure-auth', authRoutes);
 
   // Central error handler must be registered after all routes
@@ -40,11 +39,11 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    console.log('[Server] Serving production static files from dist...');
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
+    // Local production serving. Vercel serves public/ assets directly through its CDN.
+    const publicPath = path.join(process.cwd(), 'public');
+    app.use(express.static(publicPath));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      res.sendFile(path.join(publicPath, 'index.html'));
     });
   }
 
